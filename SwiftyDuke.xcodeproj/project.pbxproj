@@ -10,6 +10,8 @@
 		7C5D99BB1FDCDA9B00FB1D5C /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C5D99C01FDCDA9B00FB1D5C /* SwiftyDukeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */; };
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */; };
+		7C5D99CF1FDCDB5000FB1D5C /* SDIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		7C5D99BA1FDCDA9B00FB1D5C /* SwiftyDukeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyDukeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDukeTests.swift; sourceTree = "<group>"; };
 		7C5D99C11FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDRequester.swift; sourceTree = "<group>"; };
+		7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDIdentity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */,
 				7C5D99B51FDCDA9B00FB1D5C /* Info.plist */,
+				7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */,
+				7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */,
 			);
 			path = SwiftyDuke;
 			sourceTree = "<group>";
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					7C5D99B01FDCDA9B00FB1D5C = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					7C5D99B91FDCDA9B00FB1D5C = {
@@ -196,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5D99CF1FDCDB5000FB1D5C /* SDIdentity.swift in Sources */,
+				7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +343,7 @@
 		7C5D99C61FDCDA9B00FB1D5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +357,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lucy.SwiftyDuke;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +366,7 @@
 		7C5D99C71FDCDA9B00FB1D5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -376,6 +388,7 @@
 		7C5D99C91FDCDA9B00FB1D5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
 				INFOPLIST_FILE = SwiftyDukeTests/Info.plist;
@@ -390,6 +403,7 @@
 		7C5D99CA1FDCDA9B00FB1D5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65ZN6CM2H7;
 				INFOPLIST_FILE = SwiftyDukeTests/Info.plist;

@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import SwiftyDuke
+import os.log
 
 class SwiftyDukeTests: XCTestCase {
     
@@ -30,6 +31,20 @@ class SwiftyDukeTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testNetID(){
+        let expect = expectation(description: "netID")
+        let SDIdent = SDIdentity.init(clientID: "curriculum-mobile", clientSecret: "##iLZ%e@z@TYPGcGb%Ho9fgr$K8k79G$xCm#ut91zI=dwv=EHC")
+        
+        SDIdent.netIDIdentity { (result) in
+            os_log("Result of netid: %@", result)
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 100) { (error) in
+            os_log("Error: %@", error.debugDescription)
         }
     }
     

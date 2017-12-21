@@ -34,15 +34,25 @@ class SwiftyDukeTests: XCTestCase {
         }
     }
     
-    func testNetID(){
-        let expect = expectation(description: "netID")
-        let SDIdent = SDIdentity.init(clientID: "curriculum-mobile", clientSecret: "##iLZ%e@z@TYPGcGb%Ho9fgr$K8k79G$xCm#ut91zI=dwv=EHC")
-        
-        SDIdent.netIDIdentity { (result) in
-            os_log("Result of netid: %@", result)
+    //    func testNetID(){
+    //        let expect = expectation(description: "netID")
+    //        let SDIdent = SDIdentity.init(clientID: "curriculum-mobile", clientSecret: "##iLZ%e@z@TYPGcGb%Ho9fgr$K8k79G$xCm#ut91zI=dwv=EHC")
+    //
+    //        SDIdent.netIDIdentity { (result) in
+    //            os_log("Result of netid: %@", result)
+    //            expect.fulfill()
+    //        }
+    //
+    //        waitForExpectations(timeout: 100) { (error) in
+    //            os_log("Error: %@", error.debugDescription)
+    //        }
+    //    }
+    
+    func testAuth(){
+        let expect = expectation(description: "auth")
+        SDAuthenticator.shared.authenticate(clientID: "curriculum-mobile", redirectURI: "google.com", scope: "basic") { (response) in
             expect.fulfill()
         }
-        
         waitForExpectations(timeout: 100) { (error) in
             os_log("Error: %@", error.debugDescription)
         }

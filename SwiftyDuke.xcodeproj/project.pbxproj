@@ -12,6 +12,7 @@
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */; };
 		7C5D99CF1FDCDB5000FB1D5C /* SDIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */; };
+		7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666041FEBC337003022D1 /* SDAuthenticator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		7C5D99C11FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDRequester.swift; sourceTree = "<group>"; };
 		7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDIdentity.swift; sourceTree = "<group>"; };
+		7C8666041FEBC337003022D1 /* SDAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDAuthenticator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				7C5D99B51FDCDA9B00FB1D5C /* Info.plist */,
 				7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */,
 				7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */,
+				7C8666041FEBC337003022D1 /* SDAuthenticator.swift */,
 			);
 			path = SwiftyDuke;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */,
 				7C5D99CF1FDCDB5000FB1D5C /* SDIdentity.swift in Sources */,
 				7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */,
 			);

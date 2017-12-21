@@ -20,7 +20,8 @@ public class SDIdentity: NSObject {
     }
     
     public func netIDIdentity(completion:@escaping ([String:Any]) -> Void){
-        SDRequester.shared.makeHTTPRequest(method: "GET", endpoint: "identity/v1?client_id=\(self.clientID!)&client_secret=\(self.clientSecret!)", body: nil, completion: completion)
+        // TODO
+        SDRequester.shared.makeHTTPRequest(method: "GET", endpoint: "identity/v1?client_id=\(self.clientID!)&client_secret=\(self.clientSecret!)", headers: ["X-API-Key":""],body: nil, completion: completion)
         
     }
 

@@ -50,7 +50,7 @@ class SwiftyDukeTests: XCTestCase {
     
     func testAuth(){
         let expect = expectation(description: "auth")
-        SDAuthenticator.shared.authenticate(clientID: "curriculum-mobile", redirectURI: "google.com", scope: "basic") { (response) in
+        SDAuthenticator.shared.authenticate(clientID: "curriculum-mobile", redirectURI: "https://gitlab.oit.duke.edu/colab", scope: "basic") { (response) in
             expect.fulfill()
         }
         waitForExpectations(timeout: 100) { (error) in

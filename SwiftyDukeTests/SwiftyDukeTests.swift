@@ -48,14 +48,24 @@ class SwiftyDukeTests: XCTestCase {
     //        }
     //    }
     
-    func testAuth(){
-        let expect = expectation(description: "auth")
-        SDAuthenticator.shared.authenticate(clientID: "curriculum-mobile", redirectURI: "https://gitlab.oit.duke.edu/colab", scope: "basic") { (response) in
+//    func testAuth(){
+//        let expect = expectation(description: "auth")
+//        SDAuthenticator.shared.authenticate(clientID: "curriculum-mobile", redirectURI: "https://gitlab.oit.duke.edu/colab", scope: "basic") { (response) in
+//            expect.fulfill()
+//        }
+//        waitForExpectations(timeout: 100) { (error) in
+//            os_log("Error: %@", error.debugDescription)
+//        }
+//    }
+    
+    func testSocial(){
+        let expect = expectation(description: "social")
+        SDSocial.shared.getSocial(accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (response) in
+            os_log("%@: Response: %@", self.description, response)
             expect.fulfill()
         }
         waitForExpectations(timeout: 100) { (error) in
             os_log("Error: %@", error.debugDescription)
         }
     }
-    
 }

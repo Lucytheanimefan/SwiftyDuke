@@ -12,14 +12,14 @@ import os.log
 class SDRequester: NSObject {
     var baseURL:String!
     
-    static let shared = SDRequester(baseURL: "https://api.colab.duke.edu/")
+    static let shared = SDRequester(baseURL: SDConstants.URL.colab)
 
     init(baseURL:String) {
         super.init()
         self.baseURL = baseURL
     }
     
-    func makeHTTPRequest(method:String, endpoint: String, boundary: String, body: Data, completion:@escaping (_ result:[String:Any]) -> Void) {
+    func makeHTTPRequest(method:String, endpoint: String, boundary: String, body: Data, completion:@escaping (_ result:Any) -> Void) {
         #if DEBUG
             os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
         #endif
@@ -34,7 +34,7 @@ class SDRequester: NSObject {
         executeHTTPRequest(request: request as URLRequest, completion: completion)
     }
     
-    func makeHTTPRequest(method:String, endpoint: String, headers:[String: String]?,body: [String: Any]?, completion:@escaping (_ result:[String:Any]) -> Void) {
+    func makeHTTPRequest(method:String, endpoint: String, headers:[String: String]?,body: [String: Any]?, completion:@escaping (_ result:Any) -> Void) {
         #if DEBUG
             os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
         #endif
@@ -68,7 +68,7 @@ class SDRequester: NSObject {
         
     }
     
-    private func executeHTTPRequest(request: URLRequest, completion:@escaping (_ result:[String:Any]) -> Void, errorHandler:@escaping (_ result:[String:Any]) -> Void =  { error in
+    private func executeHTTPRequest(request: URLRequest, completion:@escaping (_ result:Any) -> Void, errorHandler:@escaping (_ result:[String:Any]) -> Void =  { error in
         if let errorDescription = error["error"] as? String
         {
             os_log("Error making http request: %@", errorDescription)
@@ -80,9 +80,13 @@ class SDRequester: NSObject {
             if (data != nil)
             {
                 do{
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]{
-                        completion(json)
-                    }
+                    let json = try JSONSerialization.jsonObject(with: data!, options: [])// as? [String:Any]{
+                    completion(json)
+                    //}
+                    //                    else
+                    //                    {
+                    //
+                    //                    }
                 }
                 catch
                 {

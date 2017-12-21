@@ -9,11 +9,9 @@
 import UIKit
 import os.log
 
-class SDAuthenticator: NSObject {
+public class SDAuthenticator: NSObject {
     
-    static let baseURL:String = "https://oauth2.oit.duke.edu/oauth/"
-    
-    let requester = SDRequester(baseURL: SDAuthenticator.baseURL)
+    let requester = SDRequester(baseURL: SDConstants.URL.oauth)
     
     static let shared = SDAuthenticator()
     
@@ -21,8 +19,8 @@ class SDAuthenticator: NSObject {
         let endpoint = "authorize.php?response_type=code&client_id=\(clientID)&scope=\(scope)&redirect_uri=\(redirectURI)"
         
         requester.makeHTTPRequest(method: "GET", endpoint: endpoint, headers: nil, body: nil) { (response) in
-            os_log("%@: Response: %@", self.description, response)
-            completion(response)
+            os_log("%@: Response: %@", self.description, response as! [String:Any])
+            completion(response as! [String:Any])
         }
     }
 

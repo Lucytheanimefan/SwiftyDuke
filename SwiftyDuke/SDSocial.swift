@@ -14,7 +14,7 @@ public class SDSocial: NSObject {
     
     static let shared = SDSocial()
     
-    public func getSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
+    public func getSocial(accessToken:String, completion:@escaping (Any) -> Void){
         
         self.requestor.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil, completion: completion as! (Any) -> Void)
     }

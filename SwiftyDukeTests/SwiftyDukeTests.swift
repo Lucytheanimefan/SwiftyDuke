@@ -72,9 +72,20 @@ class SwiftyDukeTests: XCTestCase {
     func testSocialFilter(){
         let expect = expectation(description: "social filter")
         SDSocial.shared.filterSocial(accessToken: "bd778fb524e4c197bfbfe4e56843bd90", completion: { (filtered) in
-            os_log("%@: Response: %@", self.description, filtered)
+            //os_log("%@: Response: %@", self.description, filtered)
             expect.fulfill()
         }, filterTerm: "fruitcake")
+        waitForExpectations(timeout: 100) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
+    func testSocialSource(){
+        let expect = expectation(description: "social source")
+        SDSocial.shared.socialBySource(accessToken: "bd778fb524e4c197bfbfe4e56843bd90", mediaType: SDSocial.mediaType.facebook, completion: { (filtered) in
+            os_log("%@: Response: %@", self.description, filtered)
+            expect.fulfill()
+        })
         waitForExpectations(timeout: 100) { (error) in
             os_log("Error: %@", error.debugDescription)
         }

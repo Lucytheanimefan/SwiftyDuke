@@ -14,6 +14,11 @@ public class SDSocial: NSObject {
     
     static let shared = SDSocial()
     
+    public struct mediaType{
+        static let facebook = "facebook"
+        static let twitter = "twitter"
+    }
+    
     public func getSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
         
         self.requestor.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
@@ -27,23 +32,18 @@ public class SDSocial: NSObject {
     public func filterSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void, filterTerm:String?)
     {
         self.getSocial(accessToken: accessToken) { (social) in
-            let filtered = social.filter({ (socialMessage) -> Bool in
-                var toInclude:Bool = false
-                
-                if (filterTerm != nil)
-                {
-                    if let title = socialMessage["title"] as? NSString, let body = socialMessage["body"] as? NSString
-                    {
-                        toInclude = SDParser.textInString(filterTerm: filterTerm!, text: title) || SDParser.textInString(filterTerm: filterTerm!, text: body)
-                    }
-                }
-                else
-                {
-                    toInclude = true
-                }
-                return toInclude
-            })
-            
+            var filtered:[[String:Any]]! = social
+            if (filterTerm != nil){
+                filtered = SDParser.filter(filterObject: social, filterTerm: filterTerm!, filterKeys: ["title", "body"])
+            }
+            completion(filtered)
+        }
+        
+    }
+    
+    public func socialBySource(accessToken:String, mediaType:String,completion:@escaping ([[String:Any]]) -> Void){
+        self.getSocial(accessToken: accessToken) { (social) in
+            let filtered = SDParser.filter(filterObject: social, filterTerm: mediaType, filterKeys: ["source"])
             completion(filtered)
         }
     }

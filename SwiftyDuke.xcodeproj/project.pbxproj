@@ -16,9 +16,10 @@
 		7C0CD463200650F100F39134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0CD462200650F100F39134 /* Assets.xcassets */; };
 		7C0CD466200650F100F39134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0CD464200650F100F39134 /* LaunchScreen.storyboard */; };
 		7C0CD471200650F100F39134 /* DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD470200650F100F39134 /* DemoAppTests.swift */; };
-		7C0CD47C200652A100F39134 /* CurriculumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD47B200652A100F39134 /* CurriculumTableViewController.swift */; };
 		7C0CD47D2006531200F39134 /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C0CD47E2006531200F39134 /* SwiftyDuke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */; };
+		7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */; };
 		7C5D99BB1FDCDA9B00FB1D5C /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C5D99C01FDCDA9B00FB1D5C /* SwiftyDukeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */; };
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -83,7 +84,8 @@
 		7C0CD46C200650F100F39134 /* DemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0CD470200650F100F39134 /* DemoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppTests.swift; sourceTree = "<group>"; };
 		7C0CD472200650F100F39134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C0CD47B200652A100F39134 /* CurriculumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumTableViewController.swift; sourceTree = "<group>"; };
+		7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
 		7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyDuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyDuke.h; sourceTree = "<group>"; };
 		7C5D99B51FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,7 +153,8 @@
 				7C0CD462200650F100F39134 /* Assets.xcassets */,
 				7C0CD464200650F100F39134 /* LaunchScreen.storyboard */,
 				7C0CD467200650F100F39134 /* Info.plist */,
-				7C0CD47B200652A100F39134 /* CurriculumTableViewController.swift */,
+				7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */,
+				7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */,
 			);
 			path = DemoApp;
 			sourceTree = "<group>";
@@ -391,10 +394,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0CD47C200652A100F39134 /* CurriculumTableViewController.swift in Sources */,
 				7C0CD45E200650F100F39134 /* SecondViewController.swift in Sources */,
 				7C0CD45A200650F100F39134 /* AppDelegate.swift in Sources */,
+				7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */,
 				7C0CD45C200650F100F39134 /* FirstViewController.swift in Sources */,
+				7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,19 +10,33 @@ import UIKit
 import os.log
 public class SDIdentity: NSObject {
     
-    var clientID:String!
-    var clientSecret:String!
+    static let shared = SDIdentity()
     
-    init(clientID:String, clientSecret:String) {
-        super.init()
-        self.clientID = clientID
-        self.clientSecret = clientSecret
+    public func personForNetID(netID:String,accessToken:String, completion:@escaping ([String:Any]) -> Void){
+        
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "ldap/people/netid/\(netID)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+            if let json = response as? [[String:Any]]{
+                completion(json[0])
+            }
+        }
+        
     }
     
-    public func netIDIdentity(completion:@escaping ([String:Any]) -> Void){
-        // TODO
-        SDRequester.shared.makeHTTPRequest(method: "GET", endpoint: "identity/v1?client_id=\(self.clientID!)&client_secret=\(self.clientSecret!)", headers: ["X-API-Key":""],body: nil, completion: completion as! (Any) -> Void)
-        
+    public func personForUniqueID(uniqueID:String,accessToken:String,completion:@escaping ([String:Any]) -> Void){
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "ldap/people/duid/\(uniqueID)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+  
+            if let json = response as? [String:Any]{
+                completion(json)
+            }
+        }
+    }
+    
+    public func searchPeopleDirectory(queryTerm:String, accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint:  "ldap/people?q=\(queryTerm)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+            if let json = response as? [[String:Any]]{
+                completion(json)
+            }
+        }
     }
 
 }

@@ -10,7 +10,7 @@ import UIKit
 
 public class SDSocial: NSObject {
     
-    let requestor = SDRequester(baseURL: SDConstants.URL.streamer)
+    //let requestor = SDRequester(baseURL: SDConstants.URL.streamer)
     
     static let shared = SDSocial()
     
@@ -21,7 +21,7 @@ public class SDSocial: NSObject {
     
     public func getSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
         
-        self.requestor.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
             
             if let json = response as? [[String:Any]]{
                 completion(json)

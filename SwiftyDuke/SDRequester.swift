@@ -12,7 +12,9 @@ import os.log
 class SDRequester: NSObject {
     var baseURL:String!
     
-    static let shared = SDRequester(baseURL: SDConstants.URL.colab)
+    static let colab = SDRequester(baseURL: SDConstants.URL.colab)
+    
+    static let streamer = SDRequester(baseURL: SDConstants.URL.streamer)
 
     init(baseURL:String) {
         super.init()

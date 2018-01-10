@@ -11,11 +11,11 @@ import UIKit
 class SDCurriculum: NSObject {
     
     static let shared = SDCurriculum()
-    let requestor = SDRequester(baseURL: SDConstants.URL.streamer)
+    //let requestor = SDRequester(baseURL: SDConstants.URL.streamer)
 
     public func getCoursesForSubject(subject:String, accessToken:String, completion:@escaping ([[String:Any]]) -> Void)
     {
-        self.requestor.makeHTTPRequest(method: "GET", endpoint: "curriculum/courses/subject/\(subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/courses/subject/\(subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
             
             if let json = response as? [String:Any]{
                 if let resp = json["ssr_get_courses_resp"] as? [String:Any]{

@@ -11,7 +11,7 @@ import XCTest
 import os.log
 
 class SwiftyDukeTests: XCTestCase {
-    
+    let token = "bd778fb524e4c197bfbfe4e56843bd90"
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -101,4 +101,39 @@ class SwiftyDukeTests: XCTestCase {
             os_log("Error: %@", error.debugDescription)
         }
     }
+    
+    func testIdentitySearch(){
+        let expect = expectation(description: "Identity search")
+        SDIdentity.shared.searchPeopleDirectory(queryTerm: "Lucy", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (people) in
+            os_log("%@: People: %@", self.description, people)
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
+    func testPersonForNetID(){
+        let expect = expectation(description: "Identity by netid")
+        SDIdentity.shared.personForNetID(netID: "lz107", accessToken: token) { (person) in
+            os_log("%@: Person: %@", self.description, person)
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
+    func testPersonForDUID(){
+        let expect = expectation(description: "Identity by uniqueid")
+        SDIdentity.shared.personForUniqueID(uniqueID: "0674570", accessToken: token) { (person) in
+            os_log("%@: Person: %@", self.description, person)
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
+    
 }

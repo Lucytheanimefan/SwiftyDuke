@@ -93,7 +93,7 @@ class SwiftyDukeTests: XCTestCase {
     
     func testCurriculum(){
         let expect = expectation(description: "Curriculum")
-        SDCurriculum.shared.getCurriculumForSubject(subject: "ECE - Electrical & Computer Egr", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (classes) in
+        SDCurriculum.shared.getCoursesForSubject(subject: "ECE - Electrical & Computer Egr", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (classes) in
             os_log("%@: Curricula: %@", self.description, classes)                              
             expect.fulfill()
         }

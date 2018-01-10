@@ -104,7 +104,7 @@ class SwiftyDukeTests: XCTestCase {
     
     func testIdentitySearch(){
         let expect = expectation(description: "Identity search")
-        SDIdentity.shared.searchPeopleDirectory(queryTerm: "Lucy", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (people) in
+        SDIdentityManager.shared.searchPeopleDirectory(queryTerm: "Lucy", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (people) in
             os_log("%@: People: %@", self.description, people)
             expect.fulfill()
         }
@@ -115,7 +115,7 @@ class SwiftyDukeTests: XCTestCase {
     
     func testPersonForNetID(){
         let expect = expectation(description: "Identity by netid")
-        SDIdentity.shared.personForNetID(netID: "lz107", accessToken: token) { (person) in
+        SDIdentityManager.shared.personForNetID(netID: "lz107", accessToken: token) { (person) in
             os_log("%@: Person: %@", self.description, person)
             expect.fulfill()
         }
@@ -126,7 +126,7 @@ class SwiftyDukeTests: XCTestCase {
     
     func testPersonForDUID(){
         let expect = expectation(description: "Identity by uniqueid")
-        SDIdentity.shared.personForUniqueID(uniqueID: "0674570", accessToken: token) { (person) in
+        SDIdentityManager.shared.personForUniqueID(uniqueID: "0674570", accessToken: token) { (person) in
             os_log("%@: Person: %@", self.description, person)
             expect.fulfill()
         }

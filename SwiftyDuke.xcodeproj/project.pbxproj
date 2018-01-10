@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0CD44F200647E000F39134 /* SDPlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD44E200647E000F39134 /* SDPlaceManager.swift */; };
+		7C0CD4512006490600F39134 /* SDPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4502006490600F39134 /* SDPlace.swift */; };
 		7C5D99BB1FDCDA9B00FB1D5C /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C5D99C01FDCDA9B00FB1D5C /* SwiftyDukeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */; };
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */; };
-		7C5D99CF1FDCDB5000FB1D5C /* SDIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */; };
+		7C5D99CF1FDCDB5000FB1D5C /* SDIdentityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99CE1FDCDB5000FB1D5C /* SDIdentityManager.swift */; };
 		7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666041FEBC337003022D1 /* SDAuthenticator.swift */; };
 		7C8666071FEBD681003022D1 /* SDSocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666061FEBD681003022D1 /* SDSocial.swift */; };
 		7C8666091FEBD741003022D1 /* SDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666081FEBD741003022D1 /* SDConstants.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0CD44E200647E000F39134 /* SDPlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPlaceManager.swift; sourceTree = "<group>"; };
+		7C0CD4502006490600F39134 /* SDPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPlace.swift; sourceTree = "<group>"; };
 		7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyDuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyDuke.h; sourceTree = "<group>"; };
 		7C5D99B51FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,7 +41,7 @@
 		7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDukeTests.swift; sourceTree = "<group>"; };
 		7C5D99C11FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDRequester.swift; sourceTree = "<group>"; };
-		7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDIdentity.swift; sourceTree = "<group>"; };
+		7C5D99CE1FDCDB5000FB1D5C /* SDIdentityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDIdentityManager.swift; sourceTree = "<group>"; };
 		7C8666041FEBC337003022D1 /* SDAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDAuthenticator.swift; sourceTree = "<group>"; };
 		7C8666061FEBD681003022D1 /* SDSocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSocial.swift; sourceTree = "<group>"; };
 		7C8666081FEBD741003022D1 /* SDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDConstants.swift; sourceTree = "<group>"; };
@@ -64,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C0CD4522006490E00F39134 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C0CD4502006490600F39134 /* SDPlace.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7C5D99A71FDCDA9A00FB1D5C = {
 			isa = PBXGroup;
 			children = (
@@ -85,15 +97,17 @@
 		7C5D99B31FDCDA9B00FB1D5C /* SwiftyDuke */ = {
 			isa = PBXGroup;
 			children = (
+				7C0CD4522006490E00F39134 /* Models */,
 				7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */,
 				7C5D99B51FDCDA9B00FB1D5C /* Info.plist */,
 				7C5D99CB1FDCDAB600FB1D5C /* SDRequester.swift */,
-				7C5D99CE1FDCDB5000FB1D5C /* SDIdentity.swift */,
+				7C5D99CE1FDCDB5000FB1D5C /* SDIdentityManager.swift */,
 				7C8666041FEBC337003022D1 /* SDAuthenticator.swift */,
 				7C8666061FEBD681003022D1 /* SDSocial.swift */,
 				7C8666081FEBD741003022D1 /* SDConstants.swift */,
 				7C86660E1FF99F77003022D1 /* SDParser.swift */,
 				7C8666101FF9A44C003022D1 /* SDCurriculum.swift */,
+				7C0CD44E200647E000F39134 /* SDPlaceManager.swift */,
 			);
 			path = SwiftyDuke;
 			sourceTree = "<group>";
@@ -220,8 +234,10 @@
 			files = (
 				7C8666091FEBD741003022D1 /* SDConstants.swift in Sources */,
 				7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */,
-				7C5D99CF1FDCDB5000FB1D5C /* SDIdentity.swift in Sources */,
+				7C5D99CF1FDCDB5000FB1D5C /* SDIdentityManager.swift in Sources */,
 				7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */,
+				7C0CD44F200647E000F39134 /* SDPlaceManager.swift in Sources */,
+				7C0CD4512006490600F39134 /* SDPlace.swift in Sources */,
 				7C8666071FEBD681003022D1 /* SDSocial.swift in Sources */,
 				7C8666111FF9A44D003022D1 /* SDCurriculum.swift in Sources */,
 				7C86660F1FF99F77003022D1 /* SDParser.swift in Sources */,

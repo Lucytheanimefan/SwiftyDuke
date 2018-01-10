@@ -8,9 +8,9 @@
 
 import UIKit
 import os.log
-public class SDIdentity: NSObject {
+public class SDIdentityManager: NSObject {
     
-    static let shared = SDIdentity()
+    static let shared = SDIdentityManager()
     
     public func personForNetID(netID:String,accessToken:String, completion:@escaping ([String:Any]) -> Void){
         

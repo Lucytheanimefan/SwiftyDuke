@@ -104,7 +104,7 @@ class SwiftyDukeTests: XCTestCase {
     
     func testIdentitySearch(){
         let expect = expectation(description: "Identity search")
-        SDIdentityManager.shared.searchPeopleDirectory(queryTerm: "Lucy", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (people) in
+        SDIdentityManager.shared.searchPeopleDirectory(queryTerm: "Kristianna Elbert", accessToken: "bd778fb524e4c197bfbfe4e56843bd90") { (people) in
             os_log("%@: People: %@", self.description, people)
             expect.fulfill()
         }

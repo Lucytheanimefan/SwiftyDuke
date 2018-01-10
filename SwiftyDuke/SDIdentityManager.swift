@@ -32,7 +32,7 @@ public class SDIdentityManager: NSObject {
     }
     
     public func searchPeopleDirectory(queryTerm:String, accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint:  "ldap/people?q=\(queryTerm)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint:  "ldap/people?q=\(queryTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
             if let json = response as? [[String:Any]]{
                 completion(json)
             }

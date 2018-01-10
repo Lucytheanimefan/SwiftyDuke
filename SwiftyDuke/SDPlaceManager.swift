@@ -32,7 +32,7 @@ class SDPlaceManager: NSObject {
     }
     
     public func placeForID(id:String, accessToken:String, completion:@escaping ([String:Any]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items/index?place_id=\(id)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items/index?place_id=\(id)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
             if let json = response as? [String:Any]{
                 completion(json)
             }

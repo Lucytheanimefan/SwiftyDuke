@@ -135,5 +135,39 @@ class SwiftyDukeTests: XCTestCase {
         }
     }
     
+    func testPlaceCategories(){
+        let expect = expectation(description: "Place categories")
+        SDPlaceManager.shared.getPlaceCategories(accessToken: token) { (categories) in
+            os_log("%@: Categories: %@", self.description, categories)
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
+    func testPlaceByTag(){
+        let expect = expectation(description: "Place tag")
+        SDPlaceManager.shared.placeForTag(tag:"cafe", accessToken: token) { (places) in
+            os_log("%@: Places by tag: %@", self.description, places)
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
+    func testPlaceByID(){
+        let expect = expectation(description: "Place by ID")
+        // Terrace cafe
+        SDPlaceManager.shared.placeForID(id:"10028", accessToken: token) { (places) in
+            os_log("%@: Places by id: %@", self.description, places)
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 30) { (error) in
+            os_log("Error: %@", error.debugDescription)
+        }
+    }
+    
     
 }

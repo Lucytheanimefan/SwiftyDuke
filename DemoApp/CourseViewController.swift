@@ -18,14 +18,18 @@ class CourseViewController: UIViewController {
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
-    var course:SDCourse!
+    var course:SDCourse?
     
     var courseAttributes = [String]()
+    
+    var subTableViewRowCount:Int! = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.courseLabel.text = self.courseTitle
+        
+        getCourseInfo()
         // Do any additional setup after loading the view.
     }
 
@@ -38,6 +42,9 @@ class CourseViewController: UIViewController {
         SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken) { (info) in
             //self.descriptionView.text = info["descrlong"] as! String
             self.course = SDCourse(infoDict: info)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -60,29 +67,82 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.course.propertyNames().count
+        var rowCount = 0
+        guard self.course != nil else{
+            return rowCount
+        }
+        
+        if (tableView.restorationIdentifier == "infoID")
+        {
+            rowCount = self.course!.propertyNames().count
+        }
+        else if (tableView.restorationIdentifier == "outlineTableViewID")
+        {
+            rowCount = self.subTableViewRowCount
+        }
+        return rowCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "outlineCellID") as! OutlineTableViewCell
         
-        let key = self.course.propertyNames()[indexPath.row]
-        if let value = self.course[key] as? String
-        {
-            cell.label.text = "\(key): \(value)"
+        var cell:UITableViewCell!
+        
+        guard self.course != nil else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "courseCellID") as! CourseTableViewCell
+            (cell as! CourseTableViewCell).label.text = "ERROR"
+            return cell
         }
-        else if let value = self.course[key] as? [String]
-        {
-            cell.label.text = key
-            cell.children = value
+        
+        let key = self.course!.propertyNames()[indexPath.row]
+        
+        if (tableView.restorationIdentifier == "outlineTableViewID"){
+            if let values = self.course![key] as? [String]{
+                cell = tableView.dequeueReusableCell(withIdentifier: "outlineViewSubCellID") as! CourseTableViewCell
+                (cell as! CourseTableViewCell).label.text = values[indexPath.row]
+            }
+            
         }
+        else
+        {
+            let value = self.course![key]
+            if (value is String)
+            {
+                cell = tableView.dequeueReusableCell(withIdentifier: "courseCellID") as! CourseTableViewCell
+                (cell as! CourseTableViewCell).label.text = "\(key): \(value!)"
+            }
+            else if let valueArr = value as? [String]
+            {
+                cell = tableView.dequeueReusableCell(withIdentifier: "outlineCellID") as? OutlineTableViewCell
+                (cell as! OutlineTableViewCell).label.text = key
+                (cell as! OutlineTableViewCell).children = valueArr
+                (cell as! OutlineTableViewCell).tableView.delegate = self
+                    
+            }
+        }
+        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        guard self.course != nil else{
+            return
+        }
+        
+        if (tableView.restorationIdentifier == "infoID")
+        {
+            let key = self.course!.propertyNames()[indexPath.row]
+            if let values = self.course![key] as? [String]{
+                self.subTableViewRowCount = values.count
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
-    
-    
+}
+
+extension CourseViewController: OutlineTableViewDelegate{
+   
+
 }

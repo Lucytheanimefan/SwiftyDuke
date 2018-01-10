@@ -45,7 +45,7 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
     var consent:String!
     var semester:String!
     var school:String!
-    var attributes:[String]!
+    //var attributes:[String]?
     var termsOffered:[String]!
     var career:String!
     var requirements:String?
@@ -61,13 +61,14 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
         self.units = infoDict["units_maximum"] as! String
         self.grading = infoDict["grading_basis"] as! String
         self.consent = infoDict["consent_lov_descr"] as! String
-        self.semester = infoDict["ssr_crse_typoff_cd_lov_descr"] as! String
-        self.school = infoDict["acad_group_lov_descr"] as! String
+        self.semester = ((infoDict["ssr_crse_typoff_cd"] as? String) != nil) ? (infoDict["ssr_crse_typoff_cd"] as? String) : ""
+        self.school = infoDict["acad_group_lov_descr"] as? String
         self.career = infoDict["acad_career"] as! String
         self.requirements = infoDict["rqrmnt_group_descr"] as? String
         self.termsOffered = ((infoDict["terms_offered"] as! [String:Any])["term_offered"] as! [[String:Any]]).map({ (json) -> String in
             return json["strm_lov_descr"] as! String
         })
+        
         
         
     }

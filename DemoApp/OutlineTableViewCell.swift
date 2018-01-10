@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol OutlineTableViewDelegate: UITableViewDataSource, UITableViewDelegate{
+    
+}
+
 class OutlineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
+    //var delegate: OutlineTableViewDelegate!
+    
     
     private var _children = [String]()
     var children:[String]{
@@ -22,9 +28,13 @@ class OutlineTableViewCell: UITableViewCell {
         }
     }
     
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        //self.tableView.delegate = self.delegate
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,5 +42,5 @@ class OutlineTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
+

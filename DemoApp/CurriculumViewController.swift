@@ -15,6 +15,9 @@ class CurriculumViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedSubjectField:String! = ""
+    var selectedCourseTitle:String! = ""
+    var selectedCourseID:String! = ""
+    var selectedCourseOfferNumber:String! = ""
     var subjectFields = [String]()
     
     var courses = [[String:Any]]()
@@ -33,6 +36,8 @@ class CurriculumViewController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let vc = storyBoard.instantiateViewController(withIdentifier: id)
+        
+     
         
         ((UIApplication.shared.delegate?.window)!)!.rootViewController = vc
     }
@@ -57,15 +62,22 @@ class CurriculumViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if let vc = segue.destination as? CourseViewController{
+
+            vc.courseTitle = self.selectedCourseTitle
+            vc.courseID = self.selectedCourseID
+            vc.courseOfferNumber = self.selectedCourseOfferNumber
+        }
     }
-    */
+    
 
 }
 
@@ -92,14 +104,13 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let vc = storyBoard.instantiateViewController(withIdentifier: "courseVCID") as! CourseViewController
         let course = self.courses[indexPath.row]
-        vc.courseTitle = course["course_title_long"] as! String
-        vc.courseID = course["crse_id"] as! String
+        self.selectedCourseTitle = course["course_title_long"] as! String
+        self.selectedCourseID = course["crse_id"] as! String
+        self.selectedCourseOfferNumber = course["crse_offer_nbr"] as! String
         
-        ((UIApplication.shared.delegate?.window)!)!.rootViewController = vc
+        performSegue(withIdentifier: "courseSegue", sender: self)
+
     }
 }
 

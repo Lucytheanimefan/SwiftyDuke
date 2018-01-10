@@ -21,6 +21,9 @@
 		7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */; };
 		7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */; };
 		7C0CD4872006607D00F39134 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4862006607D00F39134 /* CourseViewController.swift */; };
+		7C0CD48A2006639F00F39134 /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4892006639F00F39134 /* IdentityViewController.swift */; };
+		7C0CD48C2006775C00F39134 /* SDCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48B2006775C00F39134 /* SDCourse.swift */; };
+		7C0CD48E20067F8100F39134 /* OutlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48D20067F8100F39134 /* OutlineTableViewCell.swift */; };
 		7C5D99BB1FDCDA9B00FB1D5C /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C5D99C01FDCDA9B00FB1D5C /* SwiftyDukeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */; };
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -88,6 +91,9 @@
 		7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumViewController.swift; sourceTree = "<group>"; };
 		7C0CD4862006607D00F39134 /* CourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
+		7C0CD4892006639F00F39134 /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
+		7C0CD48B2006775C00F39134 /* SDCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCourse.swift; sourceTree = "<group>"; };
+		7C0CD48D20067F8100F39134 /* OutlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTableViewCell.swift; sourceTree = "<group>"; };
 		7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyDuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyDuke.h; sourceTree = "<group>"; };
 		7C5D99B51FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				7C0CD4502006490600F39134 /* SDPlace.swift */,
+				7C0CD48B2006775C00F39134 /* SDCourse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +165,8 @@
 				7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */,
 				7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */,
 				7C0CD4862006607D00F39134 /* CourseViewController.swift */,
+				7C0CD4892006639F00F39134 /* IdentityViewController.swift */,
+				7C0CD48D20067F8100F39134 /* OutlineTableViewCell.swift */,
 			);
 			path = DemoApp;
 			sourceTree = "<group>";
@@ -397,12 +406,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0CD48E20067F8100F39134 /* OutlineTableViewCell.swift in Sources */,
 				7C0CD45E200650F100F39134 /* SecondViewController.swift in Sources */,
 				7C0CD45A200650F100F39134 /* AppDelegate.swift in Sources */,
 				7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */,
 				7C0CD45C200650F100F39134 /* FirstViewController.swift in Sources */,
 				7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */,
 				7C0CD4872006607D00F39134 /* CourseViewController.swift in Sources */,
+				7C0CD48A2006639F00F39134 /* IdentityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C8666091FEBD741003022D1 /* SDConstants.swift in Sources */,
+				7C0CD48C2006775C00F39134 /* SDCourse.swift in Sources */,
 				7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */,
 				7C5D99CF1FDCDB5000FB1D5C /* SDIdentityManager.swift in Sources */,
 				7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */,

@@ -29,6 +29,13 @@ class CurriculumViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func transitionVC(id:String){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let vc = storyBoard.instantiateViewController(withIdentifier: id)
+        
+        ((UIApplication.shared.delegate?.window)!)!.rootViewController = vc
+    }
 
     func loadCurriculum(){
         SDCurriculum.shared.getCoursesForSubject(subject: self.selectedSubjectField, accessToken: SDConstants.Values.testToken) { (classes) in
@@ -84,31 +91,15 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
-    
-    // Override to support conditional editing of the table view.
-     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-    
-    
-    // Override to support editing the table view.
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    
-    
-    
-    // Override to support rearranging the table view.
-     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
+        let vc = storyBoard.instantiateViewController(withIdentifier: "courseVCID") as! CourseViewController
+        let course = self.courses[indexPath.row]
+        vc.courseTitle = course["course_title_long"] as! String
+        vc.courseID = course["crse_id"] as! String
+        
+        ((UIApplication.shared.delegate?.window)!)!.rootViewController = vc
     }
 }
 

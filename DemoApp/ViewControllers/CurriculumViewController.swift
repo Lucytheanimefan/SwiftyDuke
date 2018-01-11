@@ -27,9 +27,7 @@ class CurriculumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCurriculumFields()
-        // Do any additional setup after loading the view.
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
-        self.view.addGestureRecognizer(tapGesture)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,6 +103,7 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("SELECTED")
         let course = self.courses[indexPath.row]
         self.selectedCourseTitle = course["course_title_long"] as! String
         self.selectedCourseID = course["crse_id"] as! String
@@ -151,15 +150,14 @@ extension CurriculumViewController: UIPickerViewDataSource, UIPickerViewDelegate
   
     
     @IBAction func subjectFieldChanged(_ sender: UITextField) {
-        print("Field changed")
+
         searchActive = true
         let filterTerm = sender.text!
         
         self.filteredSubjectFields = self.subjectFields.filter({ (field) -> Bool in
-            
-            print(field)
+
             let include = SDParser.textInString(filterTerm: filterTerm, text: field as NSString)
-            print(include)
+
             return include
             
         })

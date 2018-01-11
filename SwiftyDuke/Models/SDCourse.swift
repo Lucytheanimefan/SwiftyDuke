@@ -46,7 +46,7 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
     var semester:String!
     var school:String!
     //var attributes:[String]! = [String]()
-    var termsOffered:[String]!
+    var termsOffered = [String]()
     var career:String!
     var requirements:String! = ""
     
@@ -67,9 +67,15 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
         if let reqs = infoDict["rqrmnt_group_descr"] as? String{
             self.requirements = reqs
         }
-        self.termsOffered = ((infoDict["terms_offered"] as! [String:Any])["term_offered"] as! [[String:Any]]).map({ (json) -> String in
-            return json["strm_lov_descr"] as! String
-        })
+        if let terms = infoDict["terms_offered"] as? [String:Any]{
+            if let term = terms["term_offered"] as? [[String:Any]]{
+                let termOffered = term.map({ (json) -> String in
+                    return json["strm_lov_descr"] as! String
+                })
+                self.termsOffered = termOffered
+            }
+        }
+        
         //if let attributes = infoDict["course_attributes"] as? [String;Any]
         
         

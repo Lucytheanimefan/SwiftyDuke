@@ -14,9 +14,11 @@ class CourseViewController: UIViewController {
     var courseTitle:String! = ""
     var courseID:String!
     var courseOfferNumber:String!
-    @IBOutlet weak var courseLabel: UILabel!
-    //@IBOutlet weak var descriptionView: UITextView!
+
+
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var courseTextView: UITextView!
     
     var course:SDCourse?
     
@@ -30,10 +32,12 @@ class CourseViewController: UIViewController {
     
     var selectedOutlineCells = [Int:Bool]()
     
+    var longTextCells = [Int:Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.courseLabel.text = self.courseTitle
+        self.courseTextView.text = self.courseTitle
         
         getCourseInfo()
         // Do any additional setup after loading the view.
@@ -109,6 +113,14 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
                 height = 150
             }
         }
+        
+        // Long text cell
+        if let letterCount = longTextCells[indexPath.row] as? Int
+        {
+            height = 30 + letterCount/50 * 17
+            print(height)
+        }
+     
         return CGFloat(height)
     }
     
@@ -134,10 +146,19 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         else if (tableView.restorationIdentifier == "infoID")
         {
             let value = self.course![key]
-            if (value is String)
+            if let value = value as? String
             {
-                cell = tableView.dequeueReusableCell(withIdentifier: "courseCellID") as! CourseTableViewCell
-                (cell as! CourseTableViewCell).label.text = "\(key): \(value!)"
+                if (value.count > 50){
+                    longTextCells[indexPath.row] = value.count
+                    cell = tableView.dequeueReusableCell(withIdentifier: "longCellID") as! LongTextTableViewCell
+                    (cell as! LongTextTableViewCell).label.text = key
+                    (cell as! LongTextTableViewCell).textView.text = value
+                }
+                else
+                {
+                    cell = tableView.dequeueReusableCell(withIdentifier: "courseCellID") as! CourseTableViewCell
+                    (cell as! CourseTableViewCell).label.text = "\(key): \(value)"
+                }
             }
             else if let valueArr = value as? [String]
             {

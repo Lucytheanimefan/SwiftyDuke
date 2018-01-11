@@ -103,7 +103,6 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("SELECTED")
         let course = self.courses[indexPath.row]
         self.selectedCourseTitle = course["course_title_long"] as! String
         self.selectedCourseID = course["crse_id"] as! String

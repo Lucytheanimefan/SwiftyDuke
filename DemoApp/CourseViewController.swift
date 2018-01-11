@@ -28,6 +28,8 @@ class CourseViewController: UIViewController {
     
     var selectedIndex:Int! = 0
     
+    var selectedOutlineCells = [Int:Bool]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +48,12 @@ class CourseViewController: UIViewController {
         SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken) { (info) in
             //self.descriptionView.text = info["descrlong"] as! String
             self.course = SDCourse(infoDict: info)
+            
+            // Populated selected cells with false
+            for (index, _) in (self.course?.propertyNames().enumerated())!{
+                self.selectedOutlineCells[index] = false
+            }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -94,19 +102,13 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let key = self.course!.propertyNames()[indexPath.row]
         let value = self.course![key]
-        var height:Int!
-        if (indexPath.row == self.selectedIndex){
+        var height:Int! = 35
+        let selected = self.selectedOutlineCells[indexPath.row]
+        if (indexPath.row == self.selectedIndex && selected!){
             if let _ = value as? [String]{
-                height = 96
-            }
-            else{
-                height = 35
+                height = 150
             }
         }
-        else{
-            height = 35
-        }
-        
         return CGFloat(height)
     }
     
@@ -155,20 +157,21 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         guard self.course != nil else{
             return
         }
-        
+
         if (tableView.restorationIdentifier == "infoID")
         {
             if let cell = tableView.cellForRow(at: indexPath) as? OutlineTableViewCell{
-                print(cell.children)
                 let key = self.course!.propertyNames()[indexPath.row]
                 if let values = self.course![key] as? [String]{
                     self.subTableViewRowCount = values.count
                     self.selectedCellChildren = values
                     self.selectedIndex = indexPath.row
-                    //DispatchQueue.main.async {
+                    
+                    let selected = selectedOutlineCells[indexPath.row]
+                    self.selectedOutlineCells[indexPath.row] = (selected == nil) ? true : !selected!
+
                     self.tableView.reloadData()
                     cell.tableView.reloadData()
-                    //}
                 }
             }
         }

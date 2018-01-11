@@ -19,29 +19,30 @@ class CurriculumViewController: UIViewController {
     var selectedCourseID:String! = ""
     var selectedCourseOfferNumber:String! = ""
     var subjectFields = [String]()
+    var filteredSubjectFields = [String]()
+    
+    var searchActive:Bool! = false
     
     var courses = [[String:Any]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCurriculumFields()
         // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func transitionVC(id:String){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let vc = storyBoard.instantiateViewController(withIdentifier: id)
-        
-     
-        
-        ((UIApplication.shared.delegate?.window)!)!.rootViewController = vc
-    }
 
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        self.subjectField.resignFirstResponder()
+    }
+    
+    
+    
     func loadCurriculum(){
         SDCurriculum.shared.getCoursesForSubject(subject: self.selectedSubjectField, accessToken: SDConstants.Values.testToken) { (classes) in
             self.courses = classes
@@ -120,22 +121,51 @@ extension CurriculumViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.subjectFields.count
+        let tmpFields = searchActive ? self.filteredSubjectFields : self.subjectFields
+        return tmpFields.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.subjectFields[row]
+        let tmpFields = searchActive ? self.filteredSubjectFields : self.subjectFields
+        
+        guard tmpFields.count >= row else {
+            return nil
+        }
+        return tmpFields[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedSubjectField = self.subjectFields[row]
+        let tmpFields = searchActive ? self.filteredSubjectFields : self.subjectFields
+        self.selectedSubjectField = tmpFields[row]
         self.subjectField.text = self.selectedSubjectField
         loadCurriculum()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.fieldDropDown.isHidden = false
-        
-        textField.endEditing(true)
+        searchActive = true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        searchActive = false
+    }
+  
+    
+    @IBAction func subjectFieldChanged(_ sender: UITextField) {
+        print("Field changed")
+        searchActive = true
+        let filterTerm = sender.text!
+        
+        self.filteredSubjectFields = self.subjectFields.filter({ (field) -> Bool in
+            
+            print(field)
+            let include = SDParser.textInString(filterTerm: filterTerm, text: field as NSString)
+            print(include)
+            return include
+            
+        })
+        
+        self.fieldDropDown.reloadAllComponents()
+    }
+    
+
 }

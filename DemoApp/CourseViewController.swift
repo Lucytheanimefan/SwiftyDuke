@@ -83,6 +83,13 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         return rowCount
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let _ = tableView.cellForRow(at: indexPath) as? OutlineTableViewCell{
+            return 96
+        }
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell!
@@ -112,11 +119,11 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
             }
             else if let valueArr = value as? [String]
             {
-                cell = tableView.dequeueReusableCell(withIdentifier: "outlineCellID") as? OutlineTableViewCell
+                cell = tableView.dequeueReusableCell(withIdentifier: "outlineCellID") as! OutlineTableViewCell
                 (cell as! OutlineTableViewCell).label.text = key
                 (cell as! OutlineTableViewCell).children = valueArr
                 (cell as! OutlineTableViewCell).tableView.delegate = self
-                    
+                (cell as! OutlineTableViewCell).tableView.reloadData()
             }
         }
         
@@ -131,11 +138,13 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         
         if (tableView.restorationIdentifier == "infoID")
         {
-            let key = self.course!.propertyNames()[indexPath.row]
-            if let values = self.course![key] as? [String]{
-                self.subTableViewRowCount = values.count
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            if let cell = tableView.cellForRow(at: indexPath) as? OutlineTableViewCell{
+                let key = self.course!.propertyNames()[indexPath.row]
+                if let values = self.course![key] as? [String]{
+                    self.subTableViewRowCount = values.count
+                    //DispatchQueue.main.async {
+                    cell.tableView.reloadData()
+                    //}
                 }
             }
         }

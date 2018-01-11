@@ -48,7 +48,7 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
     //var attributes:[String]?
     var termsOffered:[String]!
     var career:String!
-    var requirements:String?
+    var requirements:String! = ""
     
     public convenience init(infoDict:[String:Any]) {
         self.init()
@@ -64,7 +64,9 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
         self.semester = ((infoDict["ssr_crse_typoff_cd"] as? String) != nil) ? (infoDict["ssr_crse_typoff_cd"] as? String) : ""
         self.school = infoDict["acad_group_lov_descr"] as? String
         self.career = infoDict["acad_career"] as! String
-        self.requirements = infoDict["rqrmnt_group_descr"] as? String
+        if let reqs = infoDict["rqrmnt_group_descr"] as? String{
+            self.requirements = reqs
+        }
         self.termsOffered = ((infoDict["terms_offered"] as! [String:Any])["term_offered"] as! [[String:Any]]).map({ (json) -> String in
             return json["strm_lov_descr"] as! String
         })

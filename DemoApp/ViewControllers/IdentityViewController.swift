@@ -35,7 +35,8 @@ class IdentityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.searchBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -56,7 +57,9 @@ class IdentityViewController: UIViewController {
         SDIdentityManager.shared.searchPeopleDirectory(queryTerm: query, accessToken: SDConstants.Values.testToken) { (identities) in
             self.searchResults = identities
             self.filtered = identities
+    
             DispatchQueue.main.async {
+                self.searchBar.isHidden = false
                 self.tableView.reloadData()
             }
         }
@@ -97,8 +100,6 @@ extension IdentityViewController: UITableViewDelegate, UITableViewDataSource{
             }
         }
     }
-    
-    
 }
 
 extension IdentityViewController: UISearchResultsUpdating{
@@ -161,5 +162,15 @@ extension IdentityViewController: UISearchResultsUpdating{
 
 extension IdentityViewController: UISearchBarDelegate{
     
+}
+
+extension IdentityViewController: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.searchBar.isHidden = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.searchBar.isHidden = false
+    }
 }
 

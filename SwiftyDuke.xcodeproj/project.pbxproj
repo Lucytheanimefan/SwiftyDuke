@@ -10,8 +10,6 @@
 		7C0CD44F200647E000F39134 /* SDPlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD44E200647E000F39134 /* SDPlaceManager.swift */; };
 		7C0CD4512006490600F39134 /* SDPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4502006490600F39134 /* SDPlace.swift */; };
 		7C0CD45A200650F100F39134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD459200650F100F39134 /* AppDelegate.swift */; };
-		7C0CD45C200650F100F39134 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD45B200650F100F39134 /* FirstViewController.swift */; };
-		7C0CD45E200650F100F39134 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD45D200650F100F39134 /* SecondViewController.swift */; };
 		7C0CD461200650F100F39134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0CD45F200650F100F39134 /* Main.storyboard */; };
 		7C0CD463200650F100F39134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0CD462200650F100F39134 /* Assets.xcassets */; };
 		7C0CD466200650F100F39134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0CD464200650F100F39134 /* LaunchScreen.storyboard */; };
@@ -24,6 +22,8 @@
 		7C0CD48A2006639F00F39134 /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4892006639F00F39134 /* IdentityViewController.swift */; };
 		7C0CD48C2006775C00F39134 /* SDCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48B2006775C00F39134 /* SDCourse.swift */; };
 		7C0CD48E20067F8100F39134 /* OutlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD48D20067F8100F39134 /* OutlineTableViewCell.swift */; };
+		7C0CD49220078FFB00F39134 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD49120078FFB00F39134 /* PersonViewController.swift */; };
+		7C0CD4942007908C00F39134 /* SDIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4932007908C00F39134 /* SDIdentity.swift */; };
 		7C5D99BB1FDCDA9B00FB1D5C /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C5D99C01FDCDA9B00FB1D5C /* SwiftyDukeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */; };
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,8 +79,6 @@
 		7C0CD4502006490600F39134 /* SDPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPlace.swift; sourceTree = "<group>"; };
 		7C0CD457200650F100F39134 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0CD459200650F100F39134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7C0CD45B200650F100F39134 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		7C0CD45D200650F100F39134 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		7C0CD460200650F100F39134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C0CD462200650F100F39134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C0CD465200650F100F39134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,6 +92,8 @@
 		7C0CD4892006639F00F39134 /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
 		7C0CD48B2006775C00F39134 /* SDCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCourse.swift; sourceTree = "<group>"; };
 		7C0CD48D20067F8100F39134 /* OutlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTableViewCell.swift; sourceTree = "<group>"; };
+		7C0CD49120078FFB00F39134 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		7C0CD4932007908C00F39134 /* SDIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDIdentity.swift; sourceTree = "<group>"; };
 		7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyDuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyDuke.h; sourceTree = "<group>"; };
 		7C5D99B51FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 			children = (
 				7C0CD4502006490600F39134 /* SDPlace.swift */,
 				7C0CD48B2006775C00F39134 /* SDCourse.swift */,
+				7C0CD4932007908C00F39134 /* SDIdentity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,17 +156,13 @@
 		7C0CD458200650F100F39134 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				7C0CD49020078FC400F39134 /* ViewControllers */,
 				7C0CD459200650F100F39134 /* AppDelegate.swift */,
-				7C0CD45B200650F100F39134 /* FirstViewController.swift */,
-				7C0CD45D200650F100F39134 /* SecondViewController.swift */,
 				7C0CD45F200650F100F39134 /* Main.storyboard */,
 				7C0CD462200650F100F39134 /* Assets.xcassets */,
 				7C0CD464200650F100F39134 /* LaunchScreen.storyboard */,
 				7C0CD467200650F100F39134 /* Info.plist */,
 				7C0CD48220065C3D00F39134 /* CourseTableViewCell.swift */,
-				7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */,
-				7C0CD4862006607D00F39134 /* CourseViewController.swift */,
-				7C0CD4892006639F00F39134 /* IdentityViewController.swift */,
 				7C0CD48D20067F8100F39134 /* OutlineTableViewCell.swift */,
 			);
 			path = DemoApp;
@@ -178,6 +175,17 @@
 				7C0CD472200650F100F39134 /* Info.plist */,
 			);
 			path = DemoAppTests;
+			sourceTree = "<group>";
+		};
+		7C0CD49020078FC400F39134 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C0CD4862006607D00F39134 /* CourseViewController.swift */,
+				7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */,
+				7C0CD4892006639F00F39134 /* IdentityViewController.swift */,
+				7C0CD49120078FFB00F39134 /* PersonViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		7C5D99A71FDCDA9A00FB1D5C = {
@@ -407,13 +415,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0CD48E20067F8100F39134 /* OutlineTableViewCell.swift in Sources */,
-				7C0CD45E200650F100F39134 /* SecondViewController.swift in Sources */,
 				7C0CD45A200650F100F39134 /* AppDelegate.swift in Sources */,
 				7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */,
-				7C0CD45C200650F100F39134 /* FirstViewController.swift in Sources */,
 				7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */,
 				7C0CD4872006607D00F39134 /* CourseViewController.swift in Sources */,
 				7C0CD48A2006639F00F39134 /* IdentityViewController.swift in Sources */,
+				7C0CD49220078FFB00F39134 /* PersonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0CD4942007908C00F39134 /* SDIdentity.swift in Sources */,
 				7C8666091FEBD741003022D1 /* SDConstants.swift in Sources */,
 				7C0CD48C2006775C00F39134 /* SDCourse.swift in Sources */,
 				7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */,

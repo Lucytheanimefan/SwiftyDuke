@@ -28,6 +28,7 @@ class IdentityViewController: UIViewController {
     
     var searchResults = [[String:Any]]()
     var filtered = [[String:Any]]()
+    var selectedIdentity:[String:Any]!
     
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -41,6 +42,14 @@ class IdentityViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let vc =  segue.destination as? PersonViewController{
+            vc.identity = SDIdentity(infoDict: selectedIdentity)
+        }
     }
     
     func loadIdentities(query:String){
@@ -76,6 +85,17 @@ extension IdentityViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.label.text = (tmpFiltered[indexPath.row]["display_name"]) as? String
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tmpFiltered = (searchActive) ? filtered : searchResults
+        let netid = tmpFiltered[indexPath.row]["netid"] as! String
+        SDIdentityManager.shared.personForNetID(netID: netid, accessToken: SDConstants.Values.testToken) { (personInfo) in
+            self.selectedIdentity = personInfo
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "identitySegue", sender: self)
+            }
+        }
     }
     
     

@@ -15,7 +15,7 @@ class CourseViewController: UIViewController {
     var courseID:String!
     var courseOfferNumber:String!
     @IBOutlet weak var courseLabel: UILabel!
-    @IBOutlet weak var descriptionView: UITextView!
+    //@IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
     var course:SDCourse?
@@ -23,6 +23,8 @@ class CourseViewController: UIViewController {
     var courseAttributes = [String]()
     
     var subTableViewRowCount:Int! = 0
+    
+    var selectedCellChildren:[String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,10 @@ class CourseViewController: UIViewController {
         }
     }
 
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -84,10 +90,12 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let _ = tableView.cellForRow(at: indexPath) as? OutlineTableViewCell{
+        let key = self.course!.propertyNames()[indexPath.row]
+        let value = self.course![key]
+        if let _ = value as? [String]{
             return 96
         }
-        return 50
+        return 40
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,14 +110,14 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         
         let key = self.course!.propertyNames()[indexPath.row]
         
-        if (tableView.restorationIdentifier == "outlineTableViewID"){
-            if let values = self.course![key] as? [String]{
-                cell = tableView.dequeueReusableCell(withIdentifier: "outlineViewSubCellID") as! CourseTableViewCell
-                (cell as! CourseTableViewCell).label.text = values[indexPath.row]
-            }
+        if (tableView.restorationIdentifier == "outlineTableViewID")
+        {
+            cell = tableView.dequeueReusableCell(withIdentifier: "outlineViewSubCellID") as! CourseTableViewCell
+            let text = (self.selectedCellChildren != nil) ? self.selectedCellChildren[indexPath.row] : ""
+            (cell as! CourseTableViewCell).label.text = text
             
         }
-        else
+        else if (tableView.restorationIdentifier == "infoID")
         {
             let value = self.course![key]
             if (value is String)
@@ -123,10 +131,10 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
                 (cell as! OutlineTableViewCell).label.text = key
                 (cell as! OutlineTableViewCell).children = valueArr
                 (cell as! OutlineTableViewCell).tableView.delegate = self
+                (cell as! OutlineTableViewCell).tableView.dataSource = self
                 (cell as! OutlineTableViewCell).tableView.reloadData()
             }
         }
-        
         
         return cell
     }
@@ -139,9 +147,11 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         if (tableView.restorationIdentifier == "infoID")
         {
             if let cell = tableView.cellForRow(at: indexPath) as? OutlineTableViewCell{
+                print(cell.children)
                 let key = self.course!.propertyNames()[indexPath.row]
                 if let values = self.course![key] as? [String]{
                     self.subTableViewRowCount = values.count
+                    self.selectedCellChildren = values
                     //DispatchQueue.main.async {
                     cell.tableView.reloadData()
                     //}

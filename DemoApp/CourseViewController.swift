@@ -26,6 +26,8 @@ class CourseViewController: UIViewController {
     
     var selectedCellChildren:[String]!
     
+    var selectedIndex:Int! = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,10 +94,20 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let key = self.course!.propertyNames()[indexPath.row]
         let value = self.course![key]
-        if let _ = value as? [String]{
-            return 96
+        var height:Int!
+        if (indexPath.row == self.selectedIndex){
+            if let _ = value as? [String]{
+                height = 96
+            }
+            else{
+                height = 35
+            }
         }
-        return 40
+        else{
+            height = 35
+        }
+        
+        return CGFloat(height)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -152,7 +164,9 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
                 if let values = self.course![key] as? [String]{
                     self.subTableViewRowCount = values.count
                     self.selectedCellChildren = values
+                    self.selectedIndex = indexPath.row
                     //DispatchQueue.main.async {
+                    self.tableView.reloadData()
                     cell.tableView.reloadData()
                     //}
                 }

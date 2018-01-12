@@ -94,7 +94,10 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "courseCellID", for: indexPath) as! CourseTableViewCell
         
         let course = self.courses[indexPath.row]
-        let title = course["course_title_long"] as! String
+        var title:String = ""
+        if let titleLong = course["course_title_long"] as? String{
+            title = titleLong
+        }
         let courseNumber = course["catalog_nbr"] as! String
         
         cell.label.text = "\(courseNumber): \(title)"
@@ -104,7 +107,7 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let course = self.courses[indexPath.row]
-        self.selectedCourseTitle = course["course_title_long"] as! String
+        self.selectedCourseTitle = course["course_title_long"] as? String
         self.selectedCourseID = course["crse_id"] as! String
         self.selectedCourseOfferNumber = course["crse_offer_nbr"] as! String
         
@@ -149,13 +152,17 @@ extension CurriculumViewController: UIPickerViewDataSource, UIPickerViewDelegate
   
     
     @IBAction func subjectFieldChanged(_ sender: UITextField) {
-
-        searchActive = true
-        let filterTerm = sender.text!
+        let filterTerm = sender.text
+        
+        guard filterTerm != nil && (filterTerm!.count > 0) else {
+            searchActive = false
+            self.fieldDropDown.reloadAllComponents()
+            return
+        }
         
         self.filteredSubjectFields = self.subjectFields.filter({ (field) -> Bool in
 
-            let include = SDParser.textInString(filterTerm: filterTerm, text: field as NSString)
+            let include = SDParser.textInString(filterTerm: filterTerm!, text: field as NSString)
 
             return include
             

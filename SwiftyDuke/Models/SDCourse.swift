@@ -38,7 +38,7 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
     var offerNumber:String!
     var subject:String!
     var catalogNumber:String!
-    var courseDescription:String!
+    var courseDescription:String! = ""
     var title:String!
     var units:String!
     var grading:String!
@@ -56,7 +56,9 @@ public class SDCourse: NSObject, PropertyNames, PropertyReflectable {
         self.offerNumber = infoDict["crse_offer_nbr"] as! String
         self.subject = infoDict["subject"] as! String
         self.catalogNumber = infoDict["catalog_nbr"] as! String
-        self.courseDescription = infoDict["descrlong"] as! String
+        if let description = infoDict["descrlong"] as? String{
+            self.courseDescription = description
+        }
         self.title = infoDict["course_title_long"] as! String
         self.units = infoDict["units_maximum"] as! String
         self.grading = infoDict["grading_basis"] as! String

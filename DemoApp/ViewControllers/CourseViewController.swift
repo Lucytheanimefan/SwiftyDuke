@@ -108,19 +108,23 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         let value = self.course![key]
         var height:Int! = 35
         let selected = self.selectedOutlineCells[indexPath.row]
-        if (indexPath.row == self.selectedIndex && selected!){
-            if let _ = value as? [String]{
-                height = 150
+        
+        if (tableView.restorationIdentifier == "infoID")
+        {
+            // Outline view type cell
+            if (indexPath.row == self.selectedIndex && selected!){
+                if let _ = value as? [String]{
+                    height = 150
+                }
+            }
+            
+            // Long text cell
+            if let letterCount = longTextCells[indexPath.row] as? Int
+            {
+                height = 35 + letterCount/50 * 17
+                print(height)
             }
         }
-        
-        // Long text cell
-        if let letterCount = longTextCells[indexPath.row] as? Int
-        {
-            height = 30 + letterCount/50 * 17
-            print(height)
-        }
-     
         return CGFloat(height)
     }
     
@@ -128,7 +132,9 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
         
         var cell:UITableViewCell!
         
-        guard self.course != nil else{
+        print(self.course!.propertyNames())
+        print(indexPath.row)
+        guard self.course != nil && self.course!.propertyNames().count > indexPath.row else{
             cell = tableView.dequeueReusableCell(withIdentifier: "courseCellID") as! CourseTableViewCell
             (cell as! CourseTableViewCell).label.text = "ERROR"
             return cell

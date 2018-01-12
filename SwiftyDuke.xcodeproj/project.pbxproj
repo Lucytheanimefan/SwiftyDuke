@@ -25,6 +25,8 @@
 		7C0CD49220078FFB00F39134 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD49120078FFB00F39134 /* PersonViewController.swift */; };
 		7C0CD4942007908C00F39134 /* SDIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4932007908C00F39134 /* SDIdentity.swift */; };
 		7C0CD4A22008265100F39134 /* LongTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4A12008265000F39134 /* LongTextTableViewCell.swift */; };
+		7C0CD4A42008FBFD00F39134 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4A32008FBFD00F39134 /* CategoryPickerViewController.swift */; };
+		7C0CD4A62008FE0000F39134 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4A52008FE0000F39134 /* LocationViewController.swift */; };
 		7C5D99BB1FDCDA9B00FB1D5C /* SwiftyDuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */; };
 		7C5D99C01FDCDA9B00FB1D5C /* SwiftyDukeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5D99BF1FDCDA9B00FB1D5C /* SwiftyDukeTests.swift */; };
 		7C5D99C21FDCDA9B00FB1D5C /* SwiftyDuke.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,6 +98,8 @@
 		7C0CD49120078FFB00F39134 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		7C0CD4932007908C00F39134 /* SDIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDIdentity.swift; sourceTree = "<group>"; };
 		7C0CD4A12008265000F39134 /* LongTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTextTableViewCell.swift; sourceTree = "<group>"; };
+		7C0CD4A32008FBFD00F39134 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		7C0CD4A52008FE0000F39134 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		7C5D99B11FDCDA9B00FB1D5C /* SwiftyDuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyDuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5D99B41FDCDA9B00FB1D5C /* SwiftyDuke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyDuke.h; sourceTree = "<group>"; };
 		7C5D99B51FDCDA9B00FB1D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				7C0CD48420065E1E00F39134 /* CurriculumViewController.swift */,
 				7C0CD4892006639F00F39134 /* IdentityViewController.swift */,
 				7C0CD49120078FFB00F39134 /* PersonViewController.swift */,
+				7C0CD4A32008FBFD00F39134 /* CategoryPickerViewController.swift */,
+				7C0CD4A52008FE0000F39134 /* LocationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -417,10 +423,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0CD4A42008FBFD00F39134 /* CategoryPickerViewController.swift in Sources */,
 				7C0CD48E20067F8100F39134 /* OutlineTableViewCell.swift in Sources */,
 				7C0CD45A200650F100F39134 /* AppDelegate.swift in Sources */,
 				7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */,
 				7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */,
+				7C0CD4A62008FE0000F39134 /* LocationViewController.swift in Sources */,
 				7C0CD4872006607D00F39134 /* CourseViewController.swift in Sources */,
 				7C0CD48A2006639F00F39134 /* IdentityViewController.swift in Sources */,
 				7C0CD4A22008265100F39134 /* LongTextTableViewCell.swift in Sources */,

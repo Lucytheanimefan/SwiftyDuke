@@ -12,30 +12,36 @@ class SDPlaceManager: NSObject {
     
     static let shared = SDPlaceManager()
     
-    public func getPlaceCategories(accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
+    public func getPlaceCategories(accessToken:String, error: @escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
         SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/categories?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
-            if let json = response as? [[String:Any]]{
-                completion(json)
+            guard let json = response as? [[String:Any]] else {
+                error("Data for place categories incorrectly formatted")
+                return
             }
+            completion(json)
         }
     }
     
-    public func placeForTag(tag:String, accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
+    public func placeForTag(tag:String, accessToken:String, error: @escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
         SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items?tag=\(tag)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
-            if let json = response as? [[String:Any]]{
-                completion(json)
+            guard let json = response as? [[String:Any]] else {
+                error("Data for tag: \(tag) incorrectly formatted")
+                return
 //                json.forEach({ (dict) in
 //                    let place = SDPlace(id: dict["place_id"], name: dict["name"], locationName: dict["location"], longitude: <#T##Double#>, latitude: <#T##Double#>, googleMapLink: <#T##String?#>, tags: <#T##[String]?#>, phoneNumber: <#T##String?#>, open: <#T##Bool?#>)
 //                })
             }
+            completion(json)
         }
     }
     
-    public func placeForID(id:String, accessToken:String, completion:@escaping ([String:Any]) -> Void){
+    public func placeForID(id:String, accessToken:String, error: @escaping (String) -> Void, completion:@escaping ([String:Any]) -> Void){
         SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items/index?place_id=\(id)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
-            if let json = response as? [String:Any]{
-                completion(json)
+            guard let json = response as? [String:Any] else {
+                error("Data for placeID: \(id) incorrectly formatted")
+                return
             }
+            completion(json)
         }
         
     }

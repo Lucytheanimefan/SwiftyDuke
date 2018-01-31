@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyDuke
+import os.log
 
 class IdentityViewController: UIViewController {
     
@@ -54,7 +55,9 @@ class IdentityViewController: UIViewController {
     }
     
     func loadIdentities(query:String){
-        SDIdentityManager.shared.searchPeopleDirectory(queryTerm: query, accessToken: SDConstants.Values.testToken) { (identities) in
+        SDIdentityManager.shared.searchPeopleDirectory(queryTerm: query, accessToken: SDConstants.Values.testToken, error: { (message) in
+            self.handleDataError(message: message)
+        }, completion: { (identities) in
             self.searchResults = identities
             self.filtered = identities
     
@@ -62,11 +65,15 @@ class IdentityViewController: UIViewController {
                 self.searchBar.isHidden = false
                 self.tableView.reloadData()
             }
-        }
+        })
     }
     
     @IBAction func search(_ sender: UIButton) {
         loadIdentities(query: self.searchField.text!)
+    }
+    
+    private func handleDataError(message: String) {
+        os_log("%@ Response: %@", message, self.description)
     }
     
 }
@@ -93,12 +100,14 @@ extension IdentityViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tmpFiltered = (searchActive) ? filtered : searchResults
         let netid = tmpFiltered[indexPath.row]["netid"] as! String
-        SDIdentityManager.shared.personForNetID(netID: netid, accessToken: SDConstants.Values.testToken) { (personInfo) in
+        SDIdentityManager.shared.personForNetID(netID: netid, accessToken: SDConstants.Values.testToken, error: { (message) in
+            self.handleDataError(message: message)
+        }, completion:  { (personInfo) in
             self.selectedIdentity = personInfo
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "identitySegue", sender: self)
             }
-        }
+        })
     }
 }
 

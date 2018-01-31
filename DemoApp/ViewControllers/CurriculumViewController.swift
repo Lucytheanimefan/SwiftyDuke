@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyDuke
+import os.log
 
 class CurriculumViewController: CategoryPickerViewController {
 
@@ -52,18 +53,22 @@ class CurriculumViewController: CategoryPickerViewController {
     }
     
     func loadCurriculumFields(){
-        SDCurriculum.shared.curriculumValues(field: SDConstants.CurriculumField.subject, accessToken: SDConstants.Values.testToken) { (fields) in
+        SDCurriculum.shared.curriculumValues(field: SDConstants.CurriculumField.subject, accessToken: SDConstants.Values.testToken, error: {
+            (message) in
+            self.handleDataError(message: message)
+        }, completion: { (fields) in
             self.subjectFields = fields.map({ (json) -> String in
                 return "\(json["code"] as! String) - \(json["desc"] as! String)"
             })
             DispatchQueue.main.async {
                 self.fieldDropDown.reloadAllComponents()
             }
-        }
+        })
     }
+
     
-    func handleDataError() {
-        print("==== data error")
+    private func handleDataError(message: String) {
+        os_log("%@: Response: %@", self.description, message)
     }
     
     
@@ -123,23 +128,29 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
 
 extension CurriculumViewController: CategoryPickerDelegate{
     func loadFields() {
-        SDCurriculum.shared.curriculumValues(field: SDConstants.CurriculumField.subject, accessToken: SDConstants.Values.testToken) { (fields) in
+        SDCurriculum.shared.curriculumValues(field: SDConstants.CurriculumField.subject, accessToken: SDConstants.Values.testToken, error: {
+            (message) in
+            self.handleDataError(message: message)
+        }, completion: { (fields) in
             self.subjectFields = fields.map({ (json) -> String in
                 return "\(json["code"] as! String) - \(json["desc"] as! String)"
             })
             DispatchQueue.main.async {
                 self.fieldDropDown.reloadAllComponents()
             }
-        }
+        })
     }
     
     func loadResponse() {
-        SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken, error: self.handleDataError) { (classes) in
+        SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken, error: {
+            (message) in
+            self.handleDataError(message: message)
+        }, completion: { (classes) in
             self.courses = classes
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        })
     }
     
 }

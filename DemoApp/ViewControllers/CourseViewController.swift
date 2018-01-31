@@ -48,8 +48,12 @@ class CourseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func handleDataError() {
+        print("=== data error")
+    }
+    
     func getCourseInfo(){
-        SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken) { (info) in
+        SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken, error: self.handleDataError) { (info) in
             //self.descriptionView.text = info["descrlong"] as! String
             self.course = SDCourse(infoDict: info)
             

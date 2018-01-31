@@ -43,7 +43,7 @@ class CurriculumViewController: CategoryPickerViewController {
     
     
     func loadCurriculum(){
-        SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken) { (classes) in
+        SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken, error: self.handleDataError) { (classes) in
             self.courses = classes
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -60,6 +60,10 @@ class CurriculumViewController: CategoryPickerViewController {
                 self.fieldDropDown.reloadAllComponents()
             }
         }
+    }
+    
+    func handleDataError() {
+        print("==== data error")
     }
     
     
@@ -130,7 +134,7 @@ extension CurriculumViewController: CategoryPickerDelegate{
     }
     
     func loadResponse() {
-        SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken) { (classes) in
+        SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken, error: self.handleDataError) { (classes) in
             self.courses = classes
             DispatchQueue.main.async {
                 self.tableView.reloadData()

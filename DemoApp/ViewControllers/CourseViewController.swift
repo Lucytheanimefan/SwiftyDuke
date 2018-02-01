@@ -50,14 +50,26 @@ class CourseViewController: UIViewController {
     }
     
     func handleDataError(message: String) {
+        
         os_log("%@: Response: %@", self.description, message)
     }
     
     func getCourseInfo(){
+        let alertController = self.presentLoadingIndicator()
+        
         SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken, error: { (message) in
+            DispatchQueue.main.async {
+                alertController.removeLoadingIndicator()
+                alertController.title = "Authentication error"
+                alertController.message = message
+                alertController.addDismissalButton()
+            }
             self.handleDataError(message: message)
         }, completion: { (info) in
-            //self.descriptionView.text = info["descrlong"] as! String
+            
+            // Dismiss the loading indicator
+            self.dismiss(animated: false, completion: nil)
+            
             self.course = SDCourse(infoDict: info)
             
             // Populated selected cells with false

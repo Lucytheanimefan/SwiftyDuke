@@ -55,9 +55,22 @@ class IdentityViewController: UIViewController {
     }
     
     func loadIdentities(query:String){
+        let alertController = self.presentLoadingIndicator()
         SDIdentityManager.shared.searchPeopleDirectory(queryTerm: query, accessToken: SDConstants.Values.testToken, error: { (message) in
+            
+            DispatchQueue.main.async {
+                alertController.removeLoadingIndicator()
+                alertController.title = "Error"
+                alertController.message = message
+                alertController.addDismissalButton()
+            }
+            
             self.handleDataError(message: message)
         }, completion: { (identities) in
+            
+            // Dismiss the loading indicator
+            self.dismiss(animated: false, completion: nil)
+            
             self.searchResults = identities
             self.filtered = identities
     

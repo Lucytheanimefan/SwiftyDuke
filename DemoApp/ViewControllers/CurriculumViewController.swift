@@ -128,10 +128,22 @@ extension CurriculumViewController: UITableViewDelegate, UITableViewDataSource{
 
 extension CurriculumViewController: CategoryPickerDelegate{
     func loadFields() {
+        let alertController = self.presentLoadingIndicator()
         SDCurriculum.shared.curriculumValues(field: SDConstants.CurriculumField.subject, accessToken: SDConstants.Values.testToken, error: {
             (message) in
+            
+            DispatchQueue.main.async {
+                alertController.removeLoadingIndicator()
+                alertController.title = "Error"
+                alertController.message = message
+                alertController.addDismissalButton()
+            }
             self.handleDataError(message: message)
         }, completion: { (fields) in
+            
+            // Dismiss the loading indicator
+            self.dismiss(animated: false, completion: nil)
+            
             self.subjectFields = fields.map({ (json) -> String in
                 return "\(json["code"] as! String) - \(json["desc"] as! String)"
             })
@@ -142,10 +154,20 @@ extension CurriculumViewController: CategoryPickerDelegate{
     }
     
     func loadResponse() {
+        let alertController = self.presentLoadingIndicator()
         SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken, error: {
             (message) in
+            DispatchQueue.main.async {
+                alertController.removeLoadingIndicator()
+                alertController.title = "Error"
+                alertController.message = message
+                alertController.addDismissalButton()
+            }
             self.handleDataError(message: message)
         }, completion: { (classes) in
+            // Dismiss the loading indicator
+            self.dismiss(animated: false, completion: nil)
+            
             self.courses = classes
             DispatchQueue.main.async {
                 self.tableView.reloadData()

@@ -37,6 +37,7 @@
 		7C8666091FEBD741003022D1 /* SDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666081FEBD741003022D1 /* SDConstants.swift */; };
 		7C86660F1FF99F77003022D1 /* SDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86660E1FF99F77003022D1 /* SDParser.swift */; };
 		7C8666111FF9A44D003022D1 /* SDCurriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666101FF9A44C003022D1 /* SDCurriculum.swift */; };
+		7CABBA4220229C1200DF1F5B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		7C8666081FEBD741003022D1 /* SDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDConstants.swift; sourceTree = "<group>"; };
 		7C86660E1FF99F77003022D1 /* SDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDParser.swift; sourceTree = "<group>"; };
 		7C8666101FF9A44C003022D1 /* SDCurriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCurriculum.swift; sourceTree = "<group>"; };
+		7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				7C0CD49120078FFB00F39134 /* PersonViewController.swift */,
 				7C0CD4A32008FBFD00F39134 /* CategoryPickerViewController.swift */,
 				7C0CD4A52008FE0000F39134 /* LocationViewController.swift */,
+				7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */,
 				7C0CD4A62008FE0000F39134 /* LocationViewController.swift in Sources */,
 				7C0CD4872006607D00F39134 /* CourseViewController.swift in Sources */,
+				7CABBA4220229C1200DF1F5B /* ViewControllerExtension.swift in Sources */,
 				7C0CD48A2006639F00F39134 /* IdentityViewController.swift in Sources */,
 				7C0CD4A22008265100F39134 /* LongTextTableViewCell.swift in Sources */,
 				7C0CD49220078FFB00F39134 /* PersonViewController.swift in Sources */,

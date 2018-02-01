@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyDuke
+import os.log
 
 class CourseViewController: UIViewController {
 
@@ -48,8 +49,14 @@ class CourseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func handleDataError(message: String) {
+        os_log("%@: Response: %@", self.description, message)
+    }
+    
     func getCourseInfo(){
-        SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken) { (info) in
+        SDCurriculum.shared.offeringDetailsForCourse(id: courseID, offerNumber: courseOfferNumber, accessToken: SDConstants.Values.testToken, error: { (message) in
+            self.handleDataError(message: message)
+        }, completion: { (info) in
             //self.descriptionView.text = info["descrlong"] as! String
             self.course = SDCourse(infoDict: info)
             
@@ -61,7 +68,7 @@ class CourseViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        })
     }
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {

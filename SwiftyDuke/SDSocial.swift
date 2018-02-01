@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 public class SDSocial: NSObject {
     
@@ -19,33 +20,39 @@ public class SDSocial: NSObject {
         static let twitter = "twitter"
     }
     
-    public func getSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void){
+    public func getSocial(accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
         
         SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
             
-            if let json = response as? [[String:Any]]{
-                completion(json)
+            guard let json = response as? [[String:Any]] else {
+                error("Data for social incorrectly formatted")
+                return
             }
+            completion(json)
         }
     }
     
     public func filterSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void, filterTerm:String?)
     {
-        self.getSocial(accessToken: accessToken) { (social) in
+        self.getSocial(accessToken: accessToken, error: { (message) in
+            os_log("%@ Respone %@", message, self.description)
+        }, completion: { (social) in
             var filtered:[[String:Any]]! = social
             if (filterTerm != nil){
                 filtered = SDParser.filter(filterObject: social, filterTerm: filterTerm!, filterKeys: ["title", "body"])
             }
             completion(filtered)
-        }
+        })
         
     }
     
-    public func socialBySource(accessToken:String, mediaType:String,completion:@escaping ([[String:Any]]) -> Void){
-        self.getSocial(accessToken: accessToken) { (social) in
+    public func socialBySource(accessToken:String, mediaType:String, completion:@escaping ([[String:Any]]) -> Void){
+        self.getSocial(accessToken: accessToken, error: { (message) in
+            os_log("%@ Respone %@", message, self.description)
+        }, completion: { (social) in
             let filtered = SDParser.filter(filterObject: social, filterTerm: mediaType, filterKeys: ["source"])
             completion(filtered)
-        }
+        })
     }
     
     

@@ -21,7 +21,7 @@ class SDRequester: NSObject {
         self.baseURL = baseURL
     }
     
-    func makeHTTPRequest(method:String, endpoint: String, boundary: String, body: Data, completion:@escaping (_ result:Any) -> Void) {
+    func makeHTTPRequest(method:String, endpoint: String, boundary: String, body: Data, error:@escaping (String) -> Void, completion:@escaping (_ result:Any) -> Void) {
         #if DEBUG
             os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
         #endif
@@ -33,10 +33,14 @@ class SDRequester: NSObject {
         request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        executeHTTPRequest(request: request as URLRequest, completion: completion)
+        executeHTTPRequest(request: request as URLRequest, completion: completion, errorHandler: { result in
+            if let errorDescription = result["error"] as? String {
+                error(errorDescription)
+            }
+        })
     }
     
-    func makeHTTPRequest(method:String, endpoint: String, headers:[String: String]?,body: [String: Any]?, completion:@escaping (_ result:Any) -> Void) {
+    func makeHTTPRequest(method:String, endpoint: String, headers:[String: String]?,body: [String: Any]?, error:@escaping (String) -> Void, completion:@escaping (_ result:Any) -> Void) {
         #if DEBUG
             os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
         #endif
@@ -61,7 +65,11 @@ class SDRequester: NSObject {
                 request.httpBody = try! JSONSerialization.data(withJSONObject: body as Any, options: [])
             }
             
-            executeHTTPRequest(request: request as URLRequest, completion: completion)
+            executeHTTPRequest(request: request as URLRequest, completion: completion, errorHandler: { result in
+                if let errorDescription = result["error"] as? String {
+                    error(errorDescription)
+                }
+            })
         }
         else
         {
@@ -82,13 +90,8 @@ class SDRequester: NSObject {
             if (data != nil)
             {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data!, options: [])// as? [String:Any]{
+                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     completion(json)
-                    //}
-                    //                    else
-                    //                    {
-                    //
-                    //                    }
                 }
                 catch
                 {

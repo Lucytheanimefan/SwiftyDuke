@@ -22,14 +22,16 @@ public class SDSocial: NSObject {
     
     public func getSocial(accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
         
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
+            error(message)
+        }, completion: { (response) in
             
             guard let json = response as? [[String:Any]] else {
                 error("Data for social incorrectly formatted")
                 return
             }
             completion(json)
-        }
+        })
     }
     
     public func filterSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void, filterTerm:String?)
@@ -54,7 +56,5 @@ public class SDSocial: NSObject {
             completion(filtered)
         })
     }
-    
-    
 
 }

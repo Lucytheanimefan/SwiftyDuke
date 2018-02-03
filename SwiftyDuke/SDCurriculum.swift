@@ -13,9 +13,11 @@ public class SDCurriculum: NSObject {
     public static let shared = SDCurriculum()
     //let requestor = SDRequester(baseURL: SDConstants.URL.streamer)
 
-    public func getCoursesForSubject(subject:String, accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void)
-    {
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/courses/subject/\(subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+    public func getCoursesForSubject(subject:String, accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void) {
+        
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/courses/subject/\(subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)?access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
+            error(message)
+        }, completion: { (response) in
             
             guard let json = response as? [String:Any],
             let resp = json["ssr_get_courses_resp"] as? [String:Any],
@@ -29,11 +31,14 @@ public class SDCurriculum: NSObject {
                 return
             }
             completion(courseSummary)
-        }
+        })
     }
     
-    public func offeringDetailsForCourse(id:String, offerNumber:String, accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([String:Any]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/courses/crse_id/\(id)/crse_offer_nbr/\(offerNumber)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+    public func offeringDetailsForCourse(id:String, offerNumber:String, accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([String:Any]) -> Void) {
+        
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/courses/crse_id/\(id)/crse_offer_nbr/\(offerNumber)?access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
+                error(message)
+        }, completion: { (response) in
             
             guard let json = response as? [String:Any],
                 let resp = json["ssr_get_course_offering_resp"] as? [String:Any],
@@ -43,11 +48,13 @@ public class SDCurriculum: NSObject {
                     return
             }
             completion(offering)
-        }
+        })
     }
     
     public func curriculumValues(field:String, accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/list_of_values/fieldname/\(field)?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "curriculum/list_of_values/fieldname/\(field)?access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
+            error(message)
+        }, completion: { (response) in
             
             guard let json = response as? [String:Any],
                 let resp = json["scc_lov_resp"] as? [String:Any],
@@ -59,6 +66,6 @@ public class SDCurriculum: NSObject {
                     return
             }
             completion(value)
-        }
+        })
     }
 }

@@ -13,17 +13,21 @@ class SDPlaceManager: NSObject {
     static let shared = SDPlaceManager()
     
     public func getPlaceCategories(accessToken:String, error: @escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/categories?access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/categories?access_token=\(accessToken)", headers: nil, body: nil, error: {(message) in
+            error(message)
+        }, completion: { (response) in
             guard let json = response as? [[String:Any]] else {
                 error("Data for place categories incorrectly formatted")
                 return
             }
             completion(json)
-        }
+        })
     }
     
     public func placeForTag(tag:String, accessToken:String, error: @escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items?tag=\(tag)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items?tag=\(tag)&access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
+            error(message)
+        }, completion: { (response) in
             guard let json = response as? [[String:Any]] else {
                 error("Data for tag: \(tag) incorrectly formatted")
                 return
@@ -32,18 +36,19 @@ class SDPlaceManager: NSObject {
 //                })
             }
             completion(json)
-        }
+        })
     }
     
     public func placeForID(id:String, accessToken:String, error: @escaping (String) -> Void, completion:@escaping ([String:Any]) -> Void){
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items/index?place_id=\(id)&access_token=\(accessToken)", headers: nil, body: nil) { (response) in
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "places/items/index?place_id=\(id)&access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
+            error(message)
+        }, completion: { (response) in
             guard let json = response as? [String:Any] else {
                 error("Data for placeID: \(id) incorrectly formatted")
                 return
             }
             completion(json)
-        }
-        
+        })
     }
 
 }

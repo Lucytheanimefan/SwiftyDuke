@@ -58,7 +58,7 @@ class SDRequester: NSObject {
             
             if (body != nil)
             {
-                request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
+                request.httpBody = try! JSONSerialization.data(withJSONObject: body as Any, options: [])
             }
             
             executeHTTPRequest(request: request as URLRequest, completion: completion)

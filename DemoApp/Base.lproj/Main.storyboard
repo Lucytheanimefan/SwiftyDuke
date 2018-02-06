@@ -86,7 +86,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Courses" image="first" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="fieldDropDown" destination="pB3-pO-4Fo" id="KCJ-XI-FEc"/>
                         <outlet property="subjectField" destination="ZLr-Iq-jlC" id="6PD-Is-Xyh"/>
@@ -375,7 +375,7 @@
             </objects>
             <point key="canvasLocation" x="705" y="-714"/>
         </scene>
-        <!--Identity-->
+        <!--People-->
         <scene sceneID="SnX-2a-bc0">
             <objects>
                 <viewController id="z14-Mr-BV4" customClass="IdentityViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -444,7 +444,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="w1x-gt-ha0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Identity" id="UM4-JJ-aw0"/>
+                    <tabBarItem key="tabBarItem" title="People" image="second" id="UM4-JJ-aw0"/>
                     <connections>
                         <outlet property="searchBar" destination="nzB-iB-50F" id="onO-AQ-7s5"/>
                         <outlet property="searchField" destination="Ohe-Dt-qDE" id="3aQ-Rm-6Nq"/>
@@ -530,6 +530,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

@@ -138,7 +138,7 @@ extension CourseViewController: UITableViewDataSource, UITableViewDelegate{
             }
             
             // Long text cell
-            if let letterCount = longTextCells[indexPath.row] as? Int
+            if let letterCount = longTextCells[indexPath.row]
             {
                 height = 35 + letterCount/50 * 17
                 print(height)

@@ -13,7 +13,7 @@ public class SDSocial: NSObject {
     
     //let requestor = SDRequester(baseURL: SDConstants.URL.streamer)
     
-    static let shared = SDSocial()
+    public static let shared = SDSocial()
     
     public struct mediaType{
         static let facebook = "facebook"

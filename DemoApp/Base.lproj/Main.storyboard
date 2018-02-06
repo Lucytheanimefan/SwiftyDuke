@@ -305,6 +305,7 @@
                     <connections>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="z14-Mr-BV4" kind="relationship" relationship="viewControllers" id="2Zi-ea-MYc"/>
+                        <segue destination="LwS-yL-vMb" kind="relationship" relationship="viewControllers" id="UBi-sq-Odr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -527,6 +528,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4e-4e-Jpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1527" y="0.0"/>
+        </scene>
+        <!--Source-->
+        <scene sceneID="wpg-Lu-Bck">
+            <objects>
+                <tableViewController id="LwS-yL-vMb" customClass="SocialViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esn-cn-c39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="socialTableViewCell" rowHeight="82" id="FGl-WP-3Xk">
+                                <rect key="frame" x="0.0" y="28" width="375" height="82"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FGl-WP-3Xk" id="rQ1-lT-QRZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LwS-yL-vMb" id="ikH-xB-su9"/>
+                            <outlet property="delegate" destination="LwS-yL-vMb" id="6qc-C0-z8q"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Source" id="G0j-NL-Jyi"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2O-n1-XYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2508" y="0.44977511244377816"/>
         </scene>
     </scenes>
     <resources>

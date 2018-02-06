@@ -23,4 +23,9 @@ public struct SDConstants {
         public static let term = "STRM"
     }
     
+    public enum Media {
+        case Facebook
+        case Twitter
+    }
+    
 }

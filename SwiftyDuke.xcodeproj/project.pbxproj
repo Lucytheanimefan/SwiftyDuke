@@ -39,7 +39,6 @@
 		7C8666111FF9A44D003022D1 /* SDCurriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666101FF9A44C003022D1 /* SDCurriculum.swift */; };
 		7CABBA4220229C1200DF1F5B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */; };
 		B180E01220294539001D9B03 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180E01120294539001D9B03 /* SocialViewController.swift */; };
-		B180E0142029524E001D9B03 /* SDSocialPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180E0132029524E001D9B03 /* SDSocialPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +117,6 @@
 		7C8666101FF9A44C003022D1 /* SDCurriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCurriculum.swift; sourceTree = "<group>"; };
 		7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		B180E01120294539001D9B03 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
-		B180E0132029524E001D9B03 /* SDSocialPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSocialPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +159,6 @@
 				7C0CD4502006490600F39134 /* SDPlace.swift */,
 				7C0CD48B2006775C00F39134 /* SDCourse.swift */,
 				7C0CD4932007908C00F39134 /* SDIdentity.swift */,
-				B180E0132029524E001D9B03 /* SDSocialPost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -470,7 +467,6 @@
 				7C8666071FEBD681003022D1 /* SDSocial.swift in Sources */,
 				7C8666111FF9A44D003022D1 /* SDCurriculum.swift in Sources */,
 				7C86660F1FF99F77003022D1 /* SDParser.swift in Sources */,
-				B180E0142029524E001D9B03 /* SDSocialPost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

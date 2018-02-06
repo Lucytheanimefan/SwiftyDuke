@@ -50,10 +50,13 @@ class SocialViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "socialTableViewCell", for: indexPath)
         let index = indexPath.row
         let post = posts[index]
-        let sdPost = SDSocialPost(post: post)
-        cell.textLabel?.text = sdPost.title
-        if sdPost.socialMediaType == .Facebook {
-            cell.tintColor = .blue
+        if let title = post["title"] as? String {
+            cell.textLabel?.text = title
+        }
+        if let type = post["source"] as? String {
+            if type == "Facebook" {
+                cell.backgroundColor = UIColor.lightGray
+            }
         }
         return cell
     }

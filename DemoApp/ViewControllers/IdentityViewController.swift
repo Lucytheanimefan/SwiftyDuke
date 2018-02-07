@@ -12,7 +12,6 @@ import os.log
 
 class IdentityViewController: UIViewController {
     
-    @IBOutlet weak var searchField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     private var _searchActive:Bool = false
@@ -79,9 +78,6 @@ class IdentityViewController: UIViewController {
         })
     }
     
-    @IBAction func search(_ sender: UIButton) {
-        loadIdentities(query: self.searchField.text!)
-    }
     
     private func handleDataError(message: String) {
         os_log("%@ Response: %@", message, self.description)
@@ -168,6 +164,7 @@ extension IdentityViewController: UISearchResultsUpdating{
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         setSearchInactive()
     }
     
@@ -181,7 +178,6 @@ extension IdentityViewController: UISearchResultsUpdating{
     
     func setSearchInactive(){
         searchActive = false;
-        //self.filtered = self.searchResults
     }
 }
 

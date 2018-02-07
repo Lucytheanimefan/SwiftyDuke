@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="750"/>
+            <point key="canvasLocation" x="852" y="-126"/>
         </scene>
         <!--Course View Controller-->
         <scene sceneID="ztQ-MH-IQO">
@@ -293,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsx-aP-9Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="750"/>
+            <point key="canvasLocation" x="1754" y="-126"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uey-mJ-bq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="-714"/>
+            <point key="canvasLocation" x="2340" y="-977"/>
         </scene>
         <!--People-->
         <scene sceneID="SnX-2a-bc0">
@@ -459,7 +459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leV-jI-9jv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757.60000000000002" y="-0.44977511244377816"/>
+            <point key="canvasLocation" x="852" y="-865"/>
         </scene>
         <!--Person View Controller-->
         <scene sceneID="geA-hT-4bq">
@@ -533,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4e-4e-Jpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="0.0"/>
+            <point key="canvasLocation" x="1698" y="-866"/>
         </scene>
         <!--Source-->
         <scene sceneID="wpg-Lu-Bck">
@@ -562,7 +562,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2O-n1-XYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2508" y="0.44977511244377816"/>
+            <point key="canvasLocation" x="774" y="744"/>
         </scene>
     </scenes>
     <resources>

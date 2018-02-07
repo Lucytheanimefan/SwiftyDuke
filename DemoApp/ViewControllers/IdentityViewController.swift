@@ -37,8 +37,8 @@ class IdentityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchBar.isHidden = true
-        // Do any additional setup after loading the view.
+        //self.searchBar.isHidden = true
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,13 +68,11 @@ class IdentityViewController: UIViewController {
             self.handleDataError(message: message)
         }, completion: { (identities) in
             
-            // Dismiss the loading indicator
-            self.dismiss(animated: false, completion: nil)
-            
             self.searchResults = identities
             self.filtered = identities
     
             DispatchQueue.main.async {
+                alertController.dismissSelf(action: UIAlertAction())
                 self.searchBar.isHidden = false
                 self.tableView.reloadData()
             }
@@ -129,6 +127,7 @@ extension IdentityViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         
     }
+
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filtered = self.searchResults.filter({ (identityObject) -> Bool in
@@ -174,6 +173,10 @@ extension IdentityViewController: UISearchResultsUpdating{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         setSearchInactive()
+        if let text = searchBar.text{
+            loadIdentities(query: text)
+        }
+        
     }
     
     func setSearchInactive(){

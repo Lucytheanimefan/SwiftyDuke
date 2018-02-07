@@ -65,13 +65,14 @@
                             </tableView>
                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="pB3-pO-4Fo">
                                 <rect key="frame" x="16" y="50" width="343" height="121"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="8rJ-Kc-sve" id="8CR-rE-e0x"/>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="1h8-q8-Or7"/>
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pB3-pO-4Fo" firstAttribute="top" secondItem="ZLr-Iq-jlC" secondAttribute="bottom" id="9uO-ZJ-rjX"/>
                             <constraint firstItem="TEv-YX-4wS" firstAttribute="top" secondItem="pB3-pO-4Fo" secondAttribute="bottom" constant="16" id="DK2-eP-cbB"/>
@@ -252,6 +253,7 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ueO-CU-ss1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="xQG-FB-QQk">
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="n2P-UH-Nue">
@@ -442,7 +444,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="w1x-gt-ha0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="People" image="second" id="UM4-JJ-aw0"/>
@@ -503,9 +505,11 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Px-dh-UUg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="xNp-eI-ASP">
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Ve2-sI-8Zm">
+                                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancel:" destination="emZ-9o-iaf" id="6PF-5S-oTG"/>
                                             </connections>

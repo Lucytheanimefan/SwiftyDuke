@@ -73,14 +73,24 @@ extension CategoryPickerViewController: UIPickerViewDataSource, UIPickerViewDele
         return tmpFields.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let tmpFields = searchActive ? self.filteredSubjectFields : self.subjectFields
         
         guard tmpFields.count >= row else {
             return nil
         }
-        return tmpFields[row]
+        let string = NSAttributedString(string: tmpFields[row], attributes: [NSAttributedStringKey.foregroundColor:UIColor.white])
+        return string
     }
+    
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        let tmpFields = searchActive ? self.filteredSubjectFields : self.subjectFields
+//
+//        guard tmpFields.count >= row else {
+//            return nil
+//        }
+//        return tmpFields[row]
+//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let tmpFields = searchActive ? self.filteredSubjectFields : self.subjectFields

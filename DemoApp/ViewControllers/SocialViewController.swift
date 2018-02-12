@@ -10,6 +10,8 @@ import UIKit
 import SwiftyDuke
 
 class SocialViewController: UITableViewController {
+    
+    let socialMediaColors = ["Twitter": UIColor(red: 0, green: 172, blue: 237, alpha: 1), "Facebook": UIColor(red: 109, green: 132, blue: 180, alpha: 1)]
 
     var posts: [[String:Any]]? {
         didSet {
@@ -50,14 +52,15 @@ class SocialViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "socialTableViewCell", for: indexPath)
         let index = indexPath.row
         let post = posts[index]
+
         if let title = post["title"] as? String {
             cell.textLabel?.text = title
         }
+        
         if let type = post["source"] as? String {
-            if type == "Facebook" {
-                cell.backgroundColor = UIColor.lightGray
-            }
+            cell.backgroundColor = self.socialMediaColors[type]
         }
+
         return cell
     }
     

@@ -68,7 +68,8 @@ class CourseViewController: UIViewController {
         }, completion: { (info) in
             
             // Dismiss the loading indicator
-            self.dismiss(animated: false, completion: nil)
+            alertController.dismissSelf(action: UIAlertAction())
+            //self.dismiss(animated: false, completion: nil)
             
             self.course = SDCourse(infoDict: info)
             

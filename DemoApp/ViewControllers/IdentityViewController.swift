@@ -12,7 +12,6 @@ import os.log
 
 class IdentityViewController: UIViewController {
     
-    @IBOutlet weak var searchField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     private var _searchActive:Bool = false
@@ -37,8 +36,8 @@ class IdentityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchBar.isHidden = true
-        // Do any additional setup after loading the view.
+        //self.searchBar.isHidden = true
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,22 +67,17 @@ class IdentityViewController: UIViewController {
             self.handleDataError(message: message)
         }, completion: { (identities) in
             
-            // Dismiss the loading indicator
-            self.dismiss(animated: false, completion: nil)
-            
             self.searchResults = identities
             self.filtered = identities
     
             DispatchQueue.main.async {
+                alertController.dismissSelf(action: UIAlertAction())
                 self.searchBar.isHidden = false
                 self.tableView.reloadData()
             }
         })
     }
     
-    @IBAction func search(_ sender: UIButton) {
-        loadIdentities(query: self.searchField.text!)
-    }
     
     private func handleDataError(message: String) {
         os_log("%@ Response: %@", message, self.description)
@@ -129,6 +123,7 @@ extension IdentityViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         
     }
+
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.filtered = self.searchResults.filter({ (identityObject) -> Bool in
@@ -169,16 +164,20 @@ extension IdentityViewController: UISearchResultsUpdating{
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         setSearchInactive()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         setSearchInactive()
+        if let text = searchBar.text{
+            loadIdentities(query: text)
+        }
+        
     }
     
     func setSearchInactive(){
         searchActive = false;
-        //self.filtered = self.searchResults
     }
 }
 

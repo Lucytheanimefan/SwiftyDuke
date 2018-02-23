@@ -116,6 +116,7 @@
 		7C86660E1FF99F77003022D1 /* SDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDParser.swift; sourceTree = "<group>"; };
 		7C8666101FF9A44C003022D1 /* SDCurriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCurriculum.swift; sourceTree = "<group>"; };
 		7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		B11D3DC420407D0B00A03AF0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B180E01120294539001D9B03 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +207,7 @@
 		7C5D99A71FDCDA9A00FB1D5C = {
 			isa = PBXGroup;
 			children = (
+				B11D3DC420407D0B00A03AF0 /* README.md */,
 				7C5D99B31FDCDA9B00FB1D5C /* SwiftyDuke */,
 				7C5D99BE1FDCDA9B00FB1D5C /* SwiftyDukeTests */,
 				7C0CD458200650F100F39134 /* DemoApp */,

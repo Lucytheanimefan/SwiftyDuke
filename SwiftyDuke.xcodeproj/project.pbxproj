@@ -37,8 +37,8 @@
 		7C8666091FEBD741003022D1 /* SDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666081FEBD741003022D1 /* SDConstants.swift */; };
 		7C86660F1FF99F77003022D1 /* SDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86660E1FF99F77003022D1 /* SDParser.swift */; };
 		7C8666111FF9A44D003022D1 /* SDCurriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666101FF9A44C003022D1 /* SDCurriculum.swift */; };
+		7CA3E1A5207D1301004EE460 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3E1A4207D1301004EE460 /* SocialViewController.swift */; };
 		7CABBA4220229C1200DF1F5B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */; };
-		B180E01220294539001D9B03 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B180E01120294539001D9B03 /* SocialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,9 +115,9 @@
 		7C8666081FEBD741003022D1 /* SDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDConstants.swift; sourceTree = "<group>"; };
 		7C86660E1FF99F77003022D1 /* SDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDParser.swift; sourceTree = "<group>"; };
 		7C8666101FF9A44C003022D1 /* SDCurriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCurriculum.swift; sourceTree = "<group>"; };
+		7CA3E1A4207D1301004EE460 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialViewController.swift; path = ../SocialViewController.swift; sourceTree = "<group>"; };
 		7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		B11D3DC420407D0B00A03AF0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B180E01120294539001D9B03 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +199,7 @@
 				7C0CD4A32008FBFD00F39134 /* CategoryPickerViewController.swift */,
 				7C0CD4A52008FE0000F39134 /* LocationViewController.swift */,
 				7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */,
-				B180E01120294539001D9B03 /* SocialViewController.swift */,
+				7CA3E1A4207D1301004EE460 /* SocialViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -433,8 +433,8 @@
 			files = (
 				7C0CD4A42008FBFD00F39134 /* CategoryPickerViewController.swift in Sources */,
 				7C0CD48E20067F8100F39134 /* OutlineTableViewCell.swift in Sources */,
+				7CA3E1A5207D1301004EE460 /* SocialViewController.swift in Sources */,
 				7C0CD45A200650F100F39134 /* AppDelegate.swift in Sources */,
-				B180E01220294539001D9B03 /* SocialViewController.swift in Sources */,
 				7C0CD48520065E1E00F39134 /* CurriculumViewController.swift in Sources */,
 				7C0CD48320065C3D00F39134 /* CourseTableViewCell.swift in Sources */,
 				7C0CD4A62008FE0000F39134 /* LocationViewController.swift in Sources */,

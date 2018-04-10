@@ -32,6 +32,7 @@ class CurriculumViewController: CategoryPickerViewController {
         
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,7 +42,7 @@ class CurriculumViewController: CategoryPickerViewController {
         //self.subjectField.resignFirstResponder()
     }
     
-    
+
     
     func loadCurriculum(){
         SDCurriculum.shared.getCoursesForSubject(subject: self.selectedField, accessToken: SDConstants.Values.testToken, error: self.handleDataError) { (classes) in

@@ -12,7 +12,11 @@ class SDPrinter: NSObject {
     
     static let shared = SDPrinter()
     
-    public func get3dPrinters(error: @escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
+    public enum PrinterStatus:String {
+        case idle = "idle", printing = "printing", offline = "offline", all = "all"
+    }
+    
+    public func get3dPrinters(error: @escaping (String) -> Void, printerStatus: PrinterStatus = .all, completion:@escaping ([[String:Any]]) -> Void){
         SDRequester.colab.makeHTTPRequest(method: "GET", endpoint: "3dprinters/v1/printers", headers: ["x-api-key": "api-docs"], body: nil, error: {(message) in
             error(message)
         }, completion: { (response) in
@@ -20,7 +24,11 @@ class SDPrinter: NSObject {
                 error("Data for 3d printers")
                 return
             }
-            completion(json)
+            let jsonReturn = json.filter({ (keyValuePair) -> Bool in
+                
+               return (printerStatus.rawValue == "all") || ((keyValuePair["state"] as! String) == printerStatus.rawValue)
+            })
+            completion(jsonReturn)
         })
     }
 

@@ -39,7 +39,7 @@ class SwiftyDukeTests: XCTestCase {
         SDPrinter.shared.get3dPrinters(error: { (error) in
             print(error.debugDescription)
             expect.fulfill()
-        }) { (response) in
+        }, printerStatus: .offline) { (response) in
             print(response)
             expect.fulfill()
         }

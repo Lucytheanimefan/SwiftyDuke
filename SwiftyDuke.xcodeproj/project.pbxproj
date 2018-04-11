@@ -38,6 +38,7 @@
 		7C86660F1FF99F77003022D1 /* SDParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86660E1FF99F77003022D1 /* SDParser.swift */; };
 		7C8666111FF9A44D003022D1 /* SDCurriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8666101FF9A44C003022D1 /* SDCurriculum.swift */; };
 		7CA3E1B5207DA460004EE460 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3E1B4207DA45F004EE460 /* SocialViewController.swift */; };
+		7CA3E1B7207DA589004EE460 /* SDPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3E1B6207DA589004EE460 /* SDPrinter.swift */; };
 		7CABBA4220229C1200DF1F5B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		7C86660E1FF99F77003022D1 /* SDParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDParser.swift; sourceTree = "<group>"; };
 		7C8666101FF9A44C003022D1 /* SDCurriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDCurriculum.swift; sourceTree = "<group>"; };
 		7CA3E1B4207DA45F004EE460 /* SocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		7CA3E1B6207DA589004EE460 /* SDPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPrinter.swift; sourceTree = "<group>"; };
 		7CABBA4120229C1200DF1F5B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		B11D3DC420407D0B00A03AF0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,6 +243,7 @@
 				7C86660E1FF99F77003022D1 /* SDParser.swift */,
 				7C8666101FF9A44C003022D1 /* SDCurriculum.swift */,
 				7C0CD44E200647E000F39134 /* SDPlaceManager.swift */,
+				7CA3E1B6207DA589004EE460 /* SDPrinter.swift */,
 			);
 			path = SwiftyDuke;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				7C0CD48C2006775C00F39134 /* SDCourse.swift in Sources */,
 				7C8666051FEBC337003022D1 /* SDAuthenticator.swift in Sources */,
 				7C5D99CF1FDCDB5000FB1D5C /* SDIdentityManager.swift in Sources */,
+				7CA3E1B7207DA589004EE460 /* SDPrinter.swift in Sources */,
 				7C5D99CC1FDCDAB600FB1D5C /* SDRequester.swift in Sources */,
 				7C0CD44F200647E000F39134 /* SDPlaceManager.swift in Sources */,
 				7C0CD4512006490600F39134 /* SDPlace.swift in Sources */,

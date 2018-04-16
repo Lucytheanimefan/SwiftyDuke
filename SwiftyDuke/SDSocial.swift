@@ -20,22 +20,25 @@ public class SDSocial: NSObject {
         static let twitter = "twitter"
     }
     
-    public func getSocial(accessToken:String, error:@escaping (String) -> Void, completion:@escaping ([[String:Any]]) -> Void){
+    public func getSocial(accessToken:String, completion:@escaping (_ result:[[String:Any]], _ error:String) -> Void){
         
-        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", headers: nil, body: nil, error: { (message) in
-            error(message)
-        }, completion: { (response) in
-            
-            guard let json = response as? [[String:Any]] else {
-                error("Data for social incorrectly formatted")
-                return
-            }
-            completion(json)
-        })
+        SDRequester.streamer.makeHTTPRequest(method: "GET", endpoint: "social/messages?access_token=\(accessToken)", body: nil, completion: completion as! ([[String : Any]]?, String?) -> Void)
+        
+
     }
     
-    public func filterSocial(accessToken:String, completion:@escaping ([[String:Any]]) -> Void, filterTerm:String?)
+    public func filterSocial(accessToken:String, completion:@escaping (_ result:[String:Any]?, _ error:String?) -> Void, filterTerm:String?)
     {
+        self.getSocial(accessToken: accessToken) { (result, error) in
+            if let json = result as? [[String:Any]]{
+                var filtered = [[String:Any]]()
+                if (filterTerm != nil){
+                    filtered = SDParser.filter(filterObject: json, filterTerm: filterTerm!, filterKeys: ["title", "body"])
+                }
+            }
+            completion(filtered, error)
+        }
+        
         self.getSocial(accessToken: accessToken, error: { (message) in
             os_log("%@ Respone %@", message, self.description)
         }, completion: { (social) in
@@ -48,7 +51,7 @@ public class SDSocial: NSObject {
         
     }
     
-    public func socialBySource(accessToken:String, mediaType:String, completion:@escaping ([[String:Any]]) -> Void){
+    public func socialBySource(accessToken:String, mediaType:String, completion:@escaping (_ result:[String:Any], _ error:String) -> Void){
         self.getSocial(accessToken: accessToken, error: { (message) in
             os_log("%@ Respone %@", message, self.description)
         }, completion: { (social) in

@@ -9,7 +9,7 @@
 public struct SDConstants {
     struct URL {
         static let streamer = "https://streamer.oit.duke.edu/"
-        static let oauth = "https://oauth2.oit.duke.edu/oauth/"
+        static let oauth = "https://oauth.oit.duke.edu/oauth/"
         static let colab = "https://api.colab.duke.edu/"
     }
     

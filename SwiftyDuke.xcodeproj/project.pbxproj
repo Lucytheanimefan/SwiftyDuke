@@ -6,6 +6,23 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		7C7B11F8208341B500876B5B /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7C7B11FB208341B500876B5B /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				7C7B11FD208341BC00876B5B /* PBXTargetDependency */,
+				7C7B11FF208341BC00876B5B /* PBXTargetDependency */,
+				7C7B1201208341BC00876B5B /* PBXTargetDependency */,
+				7C7B1203208341BC00876B5B /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7C0CD44F200647E000F39134 /* SDPlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD44E200647E000F39134 /* SDPlaceManager.swift */; };
 		7C0CD4512006490600F39134 /* SDPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0CD4502006490600F39134 /* SDPlace.swift */; };
@@ -63,6 +80,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7C5D99B01FDCDA9B00FB1D5C;
 			remoteInfo = SwiftyDuke;
+		};
+		7C7B11FC208341BC00876B5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5D99A81FDCDA9A00FB1D5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C5D99B01FDCDA9B00FB1D5C;
+			remoteInfo = SwiftyDuke;
+		};
+		7C7B11FE208341BC00876B5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5D99A81FDCDA9A00FB1D5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C5D99B91FDCDA9B00FB1D5C;
+			remoteInfo = SwiftyDukeTests;
+		};
+		7C7B1200208341BC00876B5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5D99A81FDCDA9A00FB1D5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C0CD456200650F100F39134;
+			remoteInfo = DemoApp;
+		};
+		7C7B1202208341BC00876B5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5D99A81FDCDA9A00FB1D5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C0CD46B200650F100F39134;
+			remoteInfo = DemoAppTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -372,6 +417,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					7C7B11F8208341B500876B5B = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 7C5D99AB1FDCDA9A00FB1D5C /* Build configuration list for PBXProject "SwiftyDuke" */;
@@ -391,6 +440,7 @@
 				7C5D99B91FDCDA9B00FB1D5C /* SwiftyDukeTests */,
 				7C0CD456200650F100F39134 /* DemoApp */,
 				7C0CD46B200650F100F39134 /* DemoAppTests */,
+				7C7B11F8208341B500876B5B /* All */,
 			);
 		};
 /* End PBXProject section */
@@ -501,6 +551,26 @@
 			isa = PBXTargetDependency;
 			target = 7C5D99B01FDCDA9B00FB1D5C /* SwiftyDuke */;
 			targetProxy = 7C5D99BC1FDCDA9B00FB1D5C /* PBXContainerItemProxy */;
+		};
+		7C7B11FD208341BC00876B5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C5D99B01FDCDA9B00FB1D5C /* SwiftyDuke */;
+			targetProxy = 7C7B11FC208341BC00876B5B /* PBXContainerItemProxy */;
+		};
+		7C7B11FF208341BC00876B5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C5D99B91FDCDA9B00FB1D5C /* SwiftyDukeTests */;
+			targetProxy = 7C7B11FE208341BC00876B5B /* PBXContainerItemProxy */;
+		};
+		7C7B1201208341BC00876B5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C0CD456200650F100F39134 /* DemoApp */;
+			targetProxy = 7C7B1200208341BC00876B5B /* PBXContainerItemProxy */;
+		};
+		7C7B1203208341BC00876B5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C0CD46B200650F100F39134 /* DemoAppTests */;
+			targetProxy = 7C7B1202208341BC00876B5B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -778,6 +848,24 @@
 			};
 			name = Release;
 		};
+		7C7B11F9208341B500876B5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65ZN6CM2H7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C7B11FA208341B500876B5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65ZN6CM2H7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -822,6 +910,15 @@
 			buildConfigurations = (
 				7C5D99C91FDCDA9B00FB1D5C /* Debug */,
 				7C5D99CA1FDCDA9B00FB1D5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C7B11FB208341B500876B5B /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C7B11F9208341B500876B5B /* Debug */,
+				7C7B11FA208341B500876B5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

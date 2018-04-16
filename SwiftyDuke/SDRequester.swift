@@ -21,9 +21,9 @@ class SDRequester: NSObject {
         self.baseURL = baseURL
     }
     
-    func makeHTTPRequest(method:String, endpoint: String, boundary: String, body: Data, error:@escaping (String) -> Void, completion:@escaping (_ result:Any) -> Void) {
+    func makeHTTPRequest(method:String, endpoint: String, boundary: String, body: Data, completion:@escaping (_ result:[String:Any]?,_ error: String?) -> Void) {
         #if DEBUG
-            os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
+        os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
         #endif
         
         let request = NSMutableURLRequest(url: NSURL(string: self.baseURL + endpoint)! as URL)
@@ -33,72 +33,48 @@ class SDRequester: NSObject {
         request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        executeHTTPRequest(request: request as URLRequest, completion: completion, errorHandler: { result in
-            if let errorDescription = result["error"] as? String {
-                error(errorDescription)
-            }
-        })
+        executeHTTPRequest(request: request as URLRequest, completion: completion)
+        
     }
     
-    func makeHTTPRequest(method:String, endpoint: String, headers:[String: String]?,body: [String: Any]?, error:@escaping (String) -> Void, completion:@escaping (_ result:Any) -> Void) {
+    func makeHTTPRequest(method:String, endpoint: String, body: [String: Any]?, completion:@escaping (_ result:[String:Any]?,_ error:String?) -> Void) {
         #if DEBUG
-            os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
+        os_log("%@: Make Request: %@, %@", self.description, method, self.baseURL + endpoint)
         #endif
         
-        if let url = URL(string: self.baseURL + endpoint)
+        let request = NSMutableURLRequest(url: NSURL(string: self.baseURL + endpoint)! as URL)
+        request.httpMethod = method
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if (body != nil)
         {
-            let request = NSMutableURLRequest(url: url)
-            request.httpMethod = method
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            if (headers != nil)
-            {
-                for (key, value) in headers! {
-                    request.addValue(value, forHTTPHeaderField: key)
-                }
-            }
-            
-            if (body != nil)
-            {
-                request.httpBody = try! JSONSerialization.data(withJSONObject: body as Any, options: [])
-            }
-            
-            executeHTTPRequest(request: request as URLRequest, completion: completion, errorHandler: { result in
-                if let errorDescription = result["error"] as? String {
-                    error(errorDescription)
-                }
-            })
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
-        else
-        {
-            os_log("%@: URL %@ is null", self.description, self.baseURL + endpoint)
-        }
+        
+        executeHTTPRequest(request: request as URLRequest, completion: completion)
         
     }
     
-    private func executeHTTPRequest(request: URLRequest, completion:@escaping (_ result:Any) -> Void, errorHandler:@escaping (_ result:[String:Any]) -> Void =  { error in
-        if let errorDescription = error["error"] as? String
-        {
-            os_log("Error making http request: %@", errorDescription)
-        }
-        }) {
+    private func executeHTTPRequest(request: URLRequest, completion:@escaping (_ result:[String:Any]?, _ error:String?) -> Void)
+    {
         let session = URLSession.shared
         
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             if (data != nil)
             {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                    completion(json)
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]{
+                        completion(json, nil)
+                    }
                 }
                 catch
                 {
                     os_log("%@: Error serializing json: %@, Trying as string.", self.description, error.localizedDescription)
                     if let dataString = String(data:data!, encoding:.utf8)
                     {
-                        errorHandler(["error":dataString])
+                        completion(nil, dataString)
                     }
                     else
                     {
@@ -109,10 +85,11 @@ class SDRequester: NSObject {
             }
             else if (error != nil)
             {
-                errorHandler(["error":error.debugDescription])
-                #if DEBUG
-                    os_log("%@: Error: %@", self.description, error.debugDescription)
-                #endif
+                completion(nil, error.debugDescription)
+            }
+            else
+            {
+                completion(nil, "No results")
             }
         })
         task.resume()
